@@ -12,15 +12,14 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "address")
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int addressId;
 
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	public int addressId;
-	
-	public String area;
-	public String city;
-	public String state;
-	public String country;
-	public String pinCode;
+    private String area;
+    private String city;
+    private String state;
+    private String country;
+    private String pinCode;
 }
 

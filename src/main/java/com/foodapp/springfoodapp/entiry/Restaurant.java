@@ -25,8 +25,9 @@ public class Restaurant {
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
-	public Address address;
-	
+	private Address address;
+
 	@OneToMany(targetEntity = Item.class,cascade = CascadeType.ALL)
-	public List<Item> itemList = new ArrayList<>();
+	@JoinColumn
+	private List<Item> itemList = new ArrayList<>();
 }
