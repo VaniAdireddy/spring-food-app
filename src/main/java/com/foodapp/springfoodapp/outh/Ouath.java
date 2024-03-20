@@ -12,7 +12,7 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 @EnableWebSecurity
 public class Ouath {
 
-    @Bean
+
     DefaultSecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         return security
                 .authorizeHttpRequests(auth -> {

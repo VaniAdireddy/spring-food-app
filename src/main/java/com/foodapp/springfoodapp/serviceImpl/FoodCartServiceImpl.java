@@ -43,7 +43,9 @@ public class FoodCartServiceImpl implements FoodCartService {
                 .orElseThrow(() -> new RuntimeException("not Found"));
 //        FoodCart existingCart1 = cartRepo.findById(id).orElse(null);
 
-        existingCart.setCategoryName(foodCart.categoryName);
+        existingCart.setCartId(foodCart.getCartId());
+        existingCart.setCategoryName(foodCart.getCategoryName());
+
         return cartRepo.save(existingCart);
     }
 
