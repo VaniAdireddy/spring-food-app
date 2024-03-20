@@ -1,0 +1,13 @@
+package com.foodapp.springfoodapp;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class SpringFoodAppApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
