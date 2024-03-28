@@ -10,7 +10,7 @@ import org.springframework.security.web.DefaultSecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class Ouath {//lsdkhfosdhf
+public class Ouath {
 
 
     DefaultSecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {

@@ -18,17 +18,17 @@ public class FoodCart {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer cartId;
+    public Integer cartId;
 
-    private String categoryName;
+    public String categoryName;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
-    private Customer customer;
+    public Customer customer;
 
 
     @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
-    private List<Item> itemList;
+    public List<Item> itemList;
 
 
 }

@@ -7,12 +7,14 @@ import java.util.List;
 
 @Service
 public interface RestaurantService {
-	
-	
 	List<Restaurant> saveRestaurants(List<Restaurant> restaurants);
 	List<Restaurant> getAllRestants();
 	Restaurant addRestaurant(Restaurant restaurant);
-    Restaurant updateRestaurant(Restaurant restaurant,Integer id);
+//    Restaurant updateRestaurant(Restaurant restaurant,Integer id);
 	String deleterestaurant(Integer restaurantId);
 	Restaurant findManagerName(String managerName);
+
+
+	Restaurant updateRestaurant(Restaurant restaurant, Integer id);
+
 }

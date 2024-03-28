@@ -12,9 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RestaurantServiceImpl implements RestaurantService {
-
     private final RestaurantRepo restaurantRepo;
-
 
     @Override
     public List<Restaurant> saveRestaurants(List<Restaurant> restaurants) {
@@ -31,16 +29,6 @@ public class RestaurantServiceImpl implements RestaurantService {
         return restaurantRepo.save(restaurant);
     }
 
-    @Override
-    public Restaurant updateRestaurant(Restaurant restaurant,Integer id) {
-        Restaurant existRestaurant = restaurantRepo.findById(restaurant.getRestaurantId())
-                .orElseThrow(() -> new RuntimeException("OOPS there is no restaurant"));
-
-        existRestaurant.setRestaurantName(restaurant.getRestaurantName());
-        existRestaurant.setContactNumber(restaurant.getContactNumber());
-        existRestaurant.setManagerName(restaurant.getManagerName());
-        return restaurantRepo.save(existRestaurant);
-    }
 
     @Override
     public String deleterestaurant(Integer restaurantId) {
@@ -52,4 +40,18 @@ public class RestaurantServiceImpl implements RestaurantService {
     public Restaurant findManagerName(String managerName) {
         return restaurantRepo.managerName(managerName);
     }
+
+    @Override
+    public Restaurant updateRestaurant(Restaurant restaurant, Integer id) {
+        var exits = restaurantRepo.findById(restaurant.getRestaurantId())
+                .orElseThrow(() -> new IllegalArgumentException("There iss no Id Please Create"));
+
+        exits.setRestaurantId(restaurant.getRestaurantId());
+        exits.setRestaurantName(restaurant.getRestaurantName());
+        exits.setManagerName(restaurant.getManagerName());
+        exits.setContactNumber(restaurant.getContactNumber());
+        restaurantRepo.save(exits);
+        return exits;
+    }
+
 }

@@ -19,6 +19,7 @@
 //        return security.csrf(AbstractHttpConfigurer::disable)
 //                .authorizeHttpRequests(auth->{
 //                   auth.requestMatchers("/welcome/**").permitAll();
+//                   auth.requestMatchers("").permitAll();
 //                           auth.anyRequest().authenticated();
 //
 //                })

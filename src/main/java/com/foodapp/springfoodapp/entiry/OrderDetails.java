@@ -17,17 +17,17 @@ public class OrderDetails {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer orderId;
-	private LocalDateTime orderDate;
-	private String orderStatus;
+	public Integer orderId;
+	public LocalDateTime orderDate;
+	public String orderStatus;
 
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
-	private FoodCart cart;
+	public FoodCart cart;
 
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
-	private  Bill bill;
+	public   Bill bill;
 }

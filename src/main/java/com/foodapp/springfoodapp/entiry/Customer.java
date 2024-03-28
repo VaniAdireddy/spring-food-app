@@ -15,21 +15,21 @@ public class Customer {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private int customerId;
+	public int customerId;
 
-	private String fullName;
-	private Integer age;
-	private String gender;
-	private String mobileNumber;
-	private String email;
+	public String fullName;
+	public Integer age;
+	public String gender;
+	public String mobileNumber;
+	public String email;
 	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Address address;
+	public Address address;
 	
 	
 //	@OneToOne(cascade = CascadeType.ALL)
 //	@JsonIgnore
-//	private FoodCart foodCart;
+//	public FoodCart foodCart;
 }
 

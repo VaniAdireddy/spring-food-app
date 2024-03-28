@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int addressId;
+    public int addressId;
 
-    private String area;
-    private String city;
-    private String state;
-    private String country;
-    private String pinCode;
+    public String area;
+    public String city;
+    public String state;
+    public String country;
+    public String pinCode;
 }
 

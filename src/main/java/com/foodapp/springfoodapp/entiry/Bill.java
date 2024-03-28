@@ -17,13 +17,13 @@ public class Bill {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer billId;
-    private LocalDateTime billDate;
-    private Double totalCost;
-    private Integer totalItem;
+    public Integer billId;
+    public LocalDateTime billDate;
+    public Double totalCost;
+    public Integer totalItem;
 
 
     @OneToOne(cascade = CascadeType.ALL)
-    private OrderDetails order;
+    public OrderDetails order;
 
 }

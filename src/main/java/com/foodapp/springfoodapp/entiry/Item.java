@@ -17,12 +17,12 @@ public class Item{
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	private int itemId;
-	private String itemName;
-	private Integer quantity;
-	private Double cost;
+	public int itemId;
+	public String itemName;
+	public Integer quantity;
+	public Double cost;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn
-	private Category category;
+	public Category category;
 }

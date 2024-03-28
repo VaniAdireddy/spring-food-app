@@ -17,10 +17,10 @@ import java.util.List;
 public class Restaurant {
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
-	public int restaurantId;
-	public String restaurantName;
-	public String managerName;
-	public String contactNumber;
+	private int restaurantId;
+	private String restaurantName;
+	private String managerName;
+	private String contactNumber;
 	
 	
 	@JsonIgnore
@@ -30,4 +30,6 @@ public class Restaurant {
 	@OneToMany(targetEntity = Item.class,cascade = CascadeType.ALL)
 	@JoinColumn
 	private List<Item> itemList = new ArrayList<>();
+
+
 }

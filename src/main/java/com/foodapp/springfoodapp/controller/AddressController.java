@@ -13,7 +13,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/api/address")
 public class AddressController {
-    private final AddressServices addressServices;
+    private  AddressServices addressServices;
 
     //todo normal
     @PostMapping("/add")

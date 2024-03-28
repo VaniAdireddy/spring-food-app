@@ -10,39 +10,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/bill")
 @Slf4j
+@RequiredArgsConstructor
 public class BillController {
 
-	private final BillService billService;
+    private final BillService billService;
 
-	@PostMapping("/add")
-	public Bill addBill(@RequestBody Bill bill) {
-		return billService.addBill(bill);
-	}
-	@PostMapping("/addList")
-	public List<Bill> addBillsList(@RequestBody List<Bill> bills) {
-		return billService.saveAllBills(bills);
-	}
-
-	@GetMapping("/get")
-	public List<Bill> findAllBills() {
-		return billService.getBills();
-	}
-	@GetMapping("/bill/{billId}")
-	public Bill findById(@PathVariable("billId") int billId){
-		return billService.getById(billId);
-	}
-
-	@PutMapping("/{id}")
-	public Bill updateBill(@PathVariable Integer id,@RequestBody Bill updateBill) {
-		return billService.updateBill(id, updateBill);
-	}
-
-	@DeleteMapping("/delete/{billId}")
-	public String deleteBill(@PathVariable int billId) {
-		return billService.deleteBill(billId);
-	}
+    @PostMapping("/add")
+    public Bill addBill(@RequestBody Bill bill) {
+        return billService.addBill(bill);
+    }
+    @PostMapping("/addList")
+    public List<Bill> addBillsList(@RequestBody List<Bill> bills) {
+        return billService.saveAllBills(bills);
+    }
+    @GetMapping("/get")
+    public List<Bill> findAllBills() {
+        return billService.getBills();
+    }
+    @GetMapping("/bill/{billId}")
+    public Bill findById(@PathVariable("billId") int billId) {
+        return billService.getById(billId);
+    }
+    @PutMapping("/{id}")
+    public Bill updateBill(@PathVariable Integer id, @RequestBody Bill updateBill) {
+        return billService.updateBill(id, updateBill);
+    }
+    @DeleteMapping("/delete/{billId}")
+    public String deleteBill(@PathVariable int billId) {
+        return billService.deleteBill(billId);
+    }
 
 }
