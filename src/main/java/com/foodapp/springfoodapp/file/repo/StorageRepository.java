@@ -1,2 +1,12 @@
-package com.foodapp.springfoodapp.file.repo;public interface StorageRepository {
+package com.foodapp.springfoodapp.file.repo;
+
+import com.foodapp.springfoodapp.file.entity.ImageData;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface StorageRepository extends JpaRepository<ImageData,Long> {
+    Optional<ImageData> findByName(String fileName);
 }

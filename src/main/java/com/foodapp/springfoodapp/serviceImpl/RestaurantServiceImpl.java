@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RestaurantServiceImpl implements RestaurantService {
-    private final RestaurantRepo restaurantRepo;
+        private final RestaurantRepo restaurantRepo;
 
     @Override
     public List<Restaurant> saveRestaurants(List<Restaurant> restaurants) {

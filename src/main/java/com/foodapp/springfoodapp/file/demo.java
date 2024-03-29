@@ -1,2 +1,4 @@
-package com.foodapp.springfoodapp.file;public class demo {
+package com.foodapp.springfoodapp.file;
+
+public class demo {
 }
