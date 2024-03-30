@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/wellcome")
+@RequestMapping("/wellCome")
 public class WellCome {
 
     @GetMapping
-    public void wellComePage(){
-
+    public String wellComePage() {
+        return "hp loptop";
     }
 }

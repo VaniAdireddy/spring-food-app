@@ -1,14 +1,54 @@
+#logging:
+#  level:
+#    org:
+#      hibernate: DEBUG
+#      springframework:
+#        security: TRACE
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+#server:
+#  port: 8998
 #spring:
+#  application:
+#    name: spring-food-app
+#    security:
+#      jwt:
+#        expiration: 86400000
+#        refresh-token:
+#          expiration: 604800000
+#        secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
 #  datasource:
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://${DB_HOST}/${DB_NAME}?useSSL=false
-#    username: ${DB_USERNAME}
-#    password: ${DB_PASSWORD}
-#    hikari:
-#      initialization-fail-timeout: 0
-#  jpa:
-#    database-platform: org.hibernate.dialect.MySQL5Dialect
-#    generate-ddl: true
+#    password: raju
+#    url: jdbc:mysql://localhost:3306/spring-foodapp
+#    username: root
+#  jdbc:
 #    show-sql: true
+#  jpa:
 #    hibernate:
-#      ddl-auto: create
+#      ddl-auto: update
+#  main:
+#    allow-bean-definition-overriding: true
+#  security:
+#    oauth2:
+#      client:
+#        registration:
+#          github:
+#            client-id: Iv1.9451e962a20dbd83
+#            client-secret: f952dd59602572abeaab44ea79b3cc992e0f9c4c
+#          google:
+#            client-id: 1070292653529-297r7l0tqtbgjrnaqf7ld3n8oei45av2.apps.googleusercontent.com
+#            client-secret: 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
+#application:
+#  security:
+#    jwt:
+#      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+#      expiration: 86400000 # a day
+#      refresh-token:
+#        expiration: 604800000 # 7 days

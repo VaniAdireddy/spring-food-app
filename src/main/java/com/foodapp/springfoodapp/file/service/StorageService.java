@@ -22,7 +22,7 @@ public class StorageService {
     private final FileRepo fileRepo;
     private final StorageRepository storageRepository;
 
-    private final String FOLDER_PATH="/Users/javatechie/Desktop/MyFIles/";
+    private final String FOLDER_PATH="/Users/dnsri/Downloads/MyFIles/";
 
     public String uploadImage(MultipartFile file) throws IOException {
         ImageData imageData = storageRepository.save(ImageData.builder()

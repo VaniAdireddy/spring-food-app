@@ -30,8 +30,9 @@ public class CustomerController {
     }
 
     @DeleteMapping("/delete/{customerId}")
-    public void deleteById(@PathVariable Integer customerId){
+    public String deleteById(@PathVariable Integer customerId){
         customerService.deleteCustomerByid(customerId);
+        return "delete success";
     }
 
     @PutMapping("/updateCustomer/{customerId}")

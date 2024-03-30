@@ -10,20 +10,21 @@
 //import org.springframework.security.web.SecurityFilterChain;
 //
 //@Configuration
-//@EnableWebSecurity
-//@EnableMethodSecurity
 //public class SecurityConfig {
 //
 //    @Bean
 //    public SecurityFilterChain securityFilterChain(HttpSecurity  security) throws Exception {
-//        return security.csrf(AbstractHttpConfigurer::disable)
+//         security.csrf(AbstractHttpConfigurer::disable)
 //                .authorizeHttpRequests(auth->{
-//                   auth.requestMatchers("/welcome/**").permitAll();
+//                   auth.requestMatchers("/wellCome/**").permitAll();
+//                   auth.requestMatchers("/api/**").permitAll();
 //                   auth.requestMatchers("").permitAll();
 //                           auth.anyRequest().authenticated();
 //
-//                })
-//                .oauth2Login(Customizer.withDefaults())
-//                .formLogin(Customizer.withDefaults()).build();
+//                });
+//
+//         return security.build();
+////                .oauth2Login(Customizer.withDefaults())
+////                .formLogin(Customizer.withDefaults()).build();
 //    }
 //}

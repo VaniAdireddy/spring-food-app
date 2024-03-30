@@ -1,0 +1,29 @@
+#version: '3.8'
+#
+#services:
+#  mysql:
+#    image: mysql:latest
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: raju
+#      MYSQL_DATABASE: spring-foodapp
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: raju
+#    ports:
+#      - "3306:3306"
+#    volumes:
+#      - mysql_data:/var/lib/mysql
+#
+#  springbootapp:
+#    build: ./path_to_your_spring_boot_app  # Path to your Spring Boot app Dockerfile
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - mysql
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/your_database_name
+#      SPRING_DATASOURCE_USERNAME: your_mysql_user
+#      SPRING_DATASOURCE_PASSWORD: your_mysql_password
+#
+#volumes:
+#  mysql_data:

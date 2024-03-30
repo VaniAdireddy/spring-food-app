@@ -14,7 +14,7 @@ public interface CustomerService {
 
 	List<Customer> getCustomer();
 
-	void deleteCustomerByid(Integer customerId);
+	String deleteCustomerByid(Integer customerId);
 //	List<Customer>getAllCustomerByNative();
 
 	Customer updateCustomer(Integer customerId, Customer updateCustomer);
