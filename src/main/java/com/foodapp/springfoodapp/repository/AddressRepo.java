@@ -8,7 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface AddressRepo extends JpaRepository<Address, Integer> {
     Address findByCity(String city);
 
-//    @Query("select a from Address a")
-//    List<Address>getAllAddressByQuery();
 
 }

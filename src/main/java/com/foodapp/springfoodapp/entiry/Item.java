@@ -23,6 +23,6 @@ public class Item{
 	public Double cost;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn
+//	@JoinColumn
 	public Category category;
 }

@@ -2,6 +2,7 @@ package com.foodapp.springfoodapp.service;
 
 
 import com.foodapp.springfoodapp.entiry.Address;
+import com.foodapp.springfoodapp.entiry.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,11 +11,10 @@ import java.util.Optional;
 @Service
 public interface AddressServices {
 
-    Address addAddress(Address address);
-
-    List<Address> getAddress();
 
     List<Address> saveAddress(List<Address> addresses);
+
+    List<Address> getAddress();
 
     Optional<Address> getById(int addressId);
 
@@ -24,6 +24,5 @@ public interface AddressServices {
 
     Address findByCity(String city);
 
-//    Address findByPinCode(String pinCode);
 
 }

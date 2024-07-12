@@ -1,7 +1,15 @@
-FROM openjdk:17
+FROM adoptopenjdk/openjdk11:jdk-11.0.2.9-slim
+WORKDIR /opt
+ENV PORT 8080
+EXPOSE 8080
+COPY target/*.jar /opt/app.jar
+ENTRYPOINT exec java $JAVA_OPTS -jar app.jar
 
-EXPOSE 8081
 
-ADD target/docker-spring-image.jar docker-spring-image.jar
-
-ENTRYPOINT ["java","-jar","/docker-spring-image.jar"]
+#
+#FROM adoptopenjdk/openjdk17:latest-slim
+#WORKDIR /opt
+#ENV PORT 8990
+#EXPOSE 8990
+#COPY target/*.jar /opt/app.jar
+#ENTRYPOINT exec java $JAVA_OPTS -jar app.jar

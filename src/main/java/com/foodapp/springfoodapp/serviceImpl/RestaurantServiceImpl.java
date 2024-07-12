@@ -12,7 +12,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class RestaurantServiceImpl implements RestaurantService {
-        private final RestaurantRepo restaurantRepo;
+    private final RestaurantRepo restaurantRepo;
+
+    @Override
+    public Restaurant addRestaurant(Restaurant restaurant) {
+        return restaurantRepo.save(restaurant);
+    }
 
     @Override
     public List<Restaurant> saveRestaurants(List<Restaurant> restaurants) {
@@ -22,11 +27,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public List<Restaurant> getAllRestants() {
         return restaurantRepo.findAll();
-    }
-
-    @Override
-    public Restaurant addRestaurant(Restaurant restaurant) {
-        return restaurantRepo.save(restaurant);
     }
 
 

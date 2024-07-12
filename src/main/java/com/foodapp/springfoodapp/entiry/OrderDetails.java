@@ -13,23 +13,23 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 @Entity
+@Table
 public class OrderDetails {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	public Integer orderId;
-	public LocalDateTime orderDate;
-	public String orderStatus;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public Integer orderId;
+    public LocalDateTime orderDate;
+    public String orderStatus;
 
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JsonIgnore
-	public FoodCart cart;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    public FoodCart cart;
 
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JsonIgnore
-	public   Bill bill;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    public Bill bill;
 }

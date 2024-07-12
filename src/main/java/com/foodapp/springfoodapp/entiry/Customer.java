@@ -1,6 +1,7 @@
 package com.foodapp.springfoodapp.entiry;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,13 +24,11 @@ public class Customer {
 	public String mobileNumber;
 	public String email;
 	
-	
 	@OneToOne(cascade = CascadeType.ALL)
 	public Address address;
-	
-	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JsonIgnore
-//	public FoodCart foodCart;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
+	public FoodCart foodCart;
 }
 

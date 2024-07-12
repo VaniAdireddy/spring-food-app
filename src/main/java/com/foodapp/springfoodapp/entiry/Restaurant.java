@@ -28,7 +28,7 @@ public class Restaurant {
 	private Address address;
 
 	@OneToMany(targetEntity = Item.class,cascade = CascadeType.ALL)
-	@JoinColumn
+//	@JoinColumn
 	private List<Item> itemList = new ArrayList<>();
 
 
