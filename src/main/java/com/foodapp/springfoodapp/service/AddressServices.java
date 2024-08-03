@@ -25,4 +25,5 @@ public interface AddressServices {
     Address findByCity(String city);
 
 
+    Address saveSingleAdress(Address address);
 }

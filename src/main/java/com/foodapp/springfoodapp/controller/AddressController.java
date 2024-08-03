@@ -1,11 +1,13 @@
 package com.foodapp.springfoodapp.controller;
 
+import com.foodapp.springfoodapp.dto.AddressDto;
 import com.foodapp.springfoodapp.entiry.Address;
 import com.foodapp.springfoodapp.entiry.Bill;
 import com.foodapp.springfoodapp.entiry.Customer;
 import com.foodapp.springfoodapp.service.AddressServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,15 +17,15 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/api/address")
 public class AddressController {
-    private  AddressServices addressServices;
-
-    //todo normal
+    private AddressServices addressServices;
 
 
-
-
-    @PostMapping("/addMore")
-    public List<Address> addAddress(@RequestBody List<Address> addresses) {
+    @PostMapping
+    public ResponseEntity<Address>saveSingleAddress(@RequestBody Address address){
+        return ResponseEntity.ok().body(addressServices.saveSingleAdress(address));
+    }
+    @PostMapping("/add/list/address")
+    public List<Address> saveAddress(@RequestBody List<Address> addresses) {
         return addressServices.saveAddress(addresses);
     }
 
@@ -43,12 +45,12 @@ public class AddressController {
     }
 
     @PutMapping("/update/{id}")
-    public Address updateAddress(@RequestBody Address updateAddress){
+    public Address updateAddress(@RequestBody Address updateAddress) {
         return addressServices.updateAddress(updateAddress);
     }
 
-    @PostMapping("/findCity/{city}")
-    public Address findByAddressCity(@PathVariable String city){
+    @GetMapping("/findCity/{city}")
+    public Address findByAddressCity(@PathVariable String city) {
         return addressServices.findByCity(city);
     }
 //

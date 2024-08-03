@@ -59,7 +59,10 @@ public class AddressServicesImpl implements AddressServices {
         return addressRepo.findByCity(city);
     }
 
-
+    @Override
+    public Address saveSingleAdress(Address address) {
+        return addressRepo.save(address);
+    }
 
 
 }
