@@ -5,7 +5,6 @@ import com.foodapp.springfoodapp.entiry.Address;
 import com.foodapp.springfoodapp.entiry.Bill;
 import com.foodapp.springfoodapp.entiry.Customer;
 import com.foodapp.springfoodapp.service.AddressServices;
-import com.foodapp.springfoodapp.usersecurity.modual.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
