@@ -1,9 +1,6 @@
-package com.foodapp.springfoodapp.dto;
+package com.foodapp.springfoodapp.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -11,7 +8,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class OrderDto {
+@Data
+public class CreateOrder {
 	public Integer orderId;
 	public LocalDateTime orderDate;
 	public String orderStatus;

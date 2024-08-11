@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class AddressDto {
+public class CreateAddress {
 	public Integer addressId;
 	public String area;
 	public String city;

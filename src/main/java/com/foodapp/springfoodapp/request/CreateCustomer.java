@@ -1,15 +1,13 @@
 package com.foodapp.springfoodapp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class CustomerDto {
+@Data
+public class CreateCustomer {
 	public Integer customerId;
 	public String fullName;
 	public Integer age;
