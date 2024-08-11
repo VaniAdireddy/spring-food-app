@@ -12,24 +12,24 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name ="Restaurant")
+@Table(name = "Restaurant")
 @Entity
 public class Restaurant {
-	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
-	private int restaurantId;
-	private String restaurantName;
-	private String managerName;
-	private String contactNumber;
-	
-	
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	private Address address;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int restaurantId;
+    private String restaurantName;
+    private String managerName;
+    private String contactNumber;
 
-	@OneToMany(targetEntity = Item.class,cascade = CascadeType.ALL)
+
+//    @JsonIgnore
+    @OneToOne(cascade = CascadeType.ALL)
+    private Address address;
+
+    @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
 //	@JoinColumn
-	private List<Item> itemList = new ArrayList<>();
+    private List<Item> itemList = new ArrayList<>();
 
 
 }

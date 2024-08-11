@@ -4,6 +4,7 @@ package com.foodapp.springfoodapp.serviceImpl;
 import com.foodapp.springfoodapp.entiry.Address;
 import com.foodapp.springfoodapp.entiry.Customer;
 import com.foodapp.springfoodapp.repository.AddressRepo;
+import com.foodapp.springfoodapp.request.CreateAddress;
 import com.foodapp.springfoodapp.service.AddressServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,21 +30,17 @@ public class AddressServicesImpl implements AddressServices {
         return addressRepo.findAll();
     }
 
-    @Override
-    public Optional<Address> getById(int addressId) {
-        return addressRepo.findById(addressId);
-    }
 
     @Override
     public String deleteAddress(int addressId) {
-         addressRepo.deleteById(addressId);
-         return "delete successful";
+        addressRepo.deleteById(addressId);
+        return "delete successful";
     }
 
     @Override
     public Address updateAddress(Address updateAddress) {
-        Address address=addressRepo.findById(updateAddress.getAddressId())
-                .orElseThrow(()->new IllegalArgumentException("No Address Id"));
+        Address address = addressRepo.findById(updateAddress.getAddressId())
+                .orElseThrow(() -> new IllegalArgumentException("No Address Id"));
 
         address.setState(updateAddress.getState());
         address.setArea(updateAddress.getArea());
@@ -60,7 +57,7 @@ public class AddressServicesImpl implements AddressServices {
     }
 
     @Override
-    public Address saveSingleAdress(Address address) {
+    public Address save(Address address) {
         return addressRepo.save(address);
     }
 

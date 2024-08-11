@@ -1,4 +1,4 @@
-package com.foodapp.springfoodapp.dto;
+package com.foodapp.springfoodapp.request;
 
 
 import lombok.*;

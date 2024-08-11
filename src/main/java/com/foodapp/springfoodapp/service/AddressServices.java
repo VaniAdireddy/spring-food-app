@@ -3,6 +3,7 @@ package com.foodapp.springfoodapp.service;
 
 import com.foodapp.springfoodapp.entiry.Address;
 import com.foodapp.springfoodapp.entiry.Customer;
+import com.foodapp.springfoodapp.request.CreateAddress;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface AddressServices {
 
     List<Address> getAddress();
 
-    Optional<Address> getById(int addressId);
+   
 
     String deleteAddress(int addressId);
 
@@ -25,5 +26,6 @@ public interface AddressServices {
     Address findByCity(String city);
 
 
-    Address saveSingleAdress(Address address);
+    Address save(Address address);
+
 }

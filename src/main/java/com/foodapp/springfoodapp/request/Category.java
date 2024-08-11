@@ -9,7 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Data
-import com.foodapp.springfoodapp.request.AddressDto;
 public class Category {
 	public Integer categoryId;
 	public String categoryName;
