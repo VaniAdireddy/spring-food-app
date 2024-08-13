@@ -23,7 +23,7 @@ public class Restaurant {
     private String contactNumber;
 
 
-//    @JsonIgnore
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
