@@ -22,14 +22,13 @@ public class AddressServicesImpl implements AddressServices {
     @Override
     public List<Address> saveAddress(List<Address> addresses) {
 
-        return addressRepo.saveAll(addresses);
+        return addressRepo.findAll();
     }
 
     @Override
     public List<Address> getAddress() {
         return addressRepo.findAll();
     }
-
 
     @Override
     public String deleteAddress(int addressId) {

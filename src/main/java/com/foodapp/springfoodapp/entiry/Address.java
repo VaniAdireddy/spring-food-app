@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "address")
 public class Address {
+    //todo data layer
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int addressId;
-
     public String area;
     public String city;
     public String state;

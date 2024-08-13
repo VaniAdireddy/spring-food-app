@@ -1,7 +1,6 @@
 package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.Address;
-import com.foodapp.springfoodapp.request.CreateAddress;
 import com.foodapp.springfoodapp.service.AddressServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +19,7 @@ public class AddressController {
     public Address saveAddress(@RequestBody Address address){
         return addressServices.save(address);
     }
+
     @PostMapping("/add/list/address")
     public List<Address> saveAddress(@RequestBody List<Address> addresses) {
         return addressServices.saveAddress(addresses);

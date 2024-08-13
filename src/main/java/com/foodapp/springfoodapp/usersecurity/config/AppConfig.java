@@ -3,6 +3,7 @@ package com.foodapp.springfoodapp.usersecurity.config;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -21,24 +22,26 @@ import java.util.Collections;
 public class AppConfig {
 
     @Bean
+//    @Order(1)
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(Authorize -> Authorize
-//                		.requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER","ADMIN")
-//                                .requestMatchers("/api/**").authenticated()
-                                
-                                .anyRequest().permitAll()
+//                        .requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
+//                        .requestMatchers("/api/**").authenticated()
+
+                        .anyRequest().permitAll()
+
                 )
                 .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()));
-               
-		
-		return http.build();
-		
-	}
-	
+
+
+        return http.build();
+
+    }
+
     // CORS Configuration
     private CorsConfigurationSource corsConfigurationSource() {
         return new CorsConfigurationSource() {
@@ -46,9 +49,9 @@ public class AppConfig {
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
                 CorsConfiguration cfg = new CorsConfiguration();
                 cfg.setAllowedOrigins(Arrays.asList(
-                    "http://localhost:3000",
-                    "https://zosh-food.vercel.app",
-                    "http://localhost:4200"
+                        "http://localhost:3000",
+                        "https://zosh-food.vercel.app",
+                        "http://localhost:4200"
                 ));
                 cfg.setAllowedMethods(Collections.singletonList("*"));
                 cfg.setAllowCredentials(true);
@@ -62,7 +65,7 @@ public class AppConfig {
 
     @Bean
     PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+        return new BCryptPasswordEncoder(20);
+    }
 
 }
