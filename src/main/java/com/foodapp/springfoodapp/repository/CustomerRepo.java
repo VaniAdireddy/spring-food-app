@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CustomerRepo extends JpaRepository<Customer, Integer> {
+
+
     Customer findByEmail(String email);
    @Query(value = "select * from Customer where mobileNumber =?",nativeQuery = true)
     Customer findByMobileNumber(String mobileNumber);
