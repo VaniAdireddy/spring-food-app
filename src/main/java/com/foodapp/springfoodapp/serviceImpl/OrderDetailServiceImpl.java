@@ -37,7 +37,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     }
 
     @Override
-    public OrderDetails updateOrder(OrderDetails updateOrderDetails, Integer id) {
+    public OrderDetails updateOrder(OrderDetails updateOrderDetails, int id) {
         OrderDetails existOrderDetails = orderDetailRepo.findById(updateOrderDetails.getOrderId())
                 .orElseThrow(() -> new RuntimeException("No OrderId's Please Create.."));
 

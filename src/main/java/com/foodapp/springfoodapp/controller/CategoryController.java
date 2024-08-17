@@ -3,41 +3,49 @@ package com.foodapp.springfoodapp.controller;
 import com.foodapp.springfoodapp.entiry.Category;
 import com.foodapp.springfoodapp.service.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.imageio.plugins.tiff.GeoTIFFTagSet;
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/category")
 public class CategoryController {
-	
-	private final CategoryService categoryService;
-	
-	@PostMapping("/addCategory")
-	public Category addCategory(@RequestBody Category category) {
-		return categoryService.addCategory(category);
-	}
-	
-	@PostMapping("/addMore")
-	public List<Category> addListCategory(@RequestBody List<Category> categories) {
-		return categoryService.saveCategory(categories);
-	}
-	
-	@GetMapping("/get")
-	public List<Category> findAllCategory() {
-		
-		return categoryService.getAllcategorys();
-	}
 
-	@DeleteMapping("/delete/{categoryId}")
-	public String deleteCategory(@PathVariable Integer categoryId){
-		return categoryService.deleteCategoryById(categoryId);
-	}
-	@PutMapping("/update/{id}")
-	public Category updateAddress(@RequestBody Category updateCategory,Integer id){
-		return categoryService.updatecategory(updateCategory,id);
-	}
+    private final CategoryService categoryService;
+
+    @PostMapping("/addCategory")
+    public ResponseEntity<Category> addCategory(@RequestBody Category category) {
+        Category saveCategory = categoryService.addCategory(category);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveCategory);
+    }
+
+    @PostMapping("/addMore")
+    public ResponseEntity<List<Category>> addListCategory(@RequestBody List<Category> categories) {
+        List<Category> categoryList = categoryService.saveCategory(categories);
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryList);
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<List<Category>> findAllCategory() {
+        List<Category> category = categoryService.getAllcategorys();
+        return ResponseEntity.status(HttpStatus.CREATED).body(category);
+    }
+
+    @DeleteMapping("/delete/{categoryId}")
+    public ResponseEntity<String> deleteCategory(@PathVariable Integer categoryId) {
+        String deleteCategoryId = categoryService.deleteCategoryById(categoryId);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(deleteCategoryId);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Category> updateAddress(@RequestBody Category updateCategory, Integer id) {
+        Category categoryUpdate = categoryService.updatecategory(updateCategory, id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryUpdate);
+    }
 
 
 }

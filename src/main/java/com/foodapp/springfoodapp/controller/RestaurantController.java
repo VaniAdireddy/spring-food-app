@@ -3,6 +3,8 @@ package com.foodapp.springfoodapp.controller;
 import com.foodapp.springfoodapp.entiry.Restaurant;
 import com.foodapp.springfoodapp.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,32 +17,39 @@ public class RestaurantController {
     private final RestaurantService restaurantService;
 
     @PostMapping("/add")
-    public Restaurant restaurant(@RequestBody Restaurant restaurant) {
-        return restaurantService.addRestaurant(restaurant);
+    public ResponseEntity<Restaurant> restaurant(@RequestBody Restaurant restaurant) {
+        Restaurant saveRestaurant = restaurantService.addRestaurant(restaurant);
+        return new ResponseEntity<>(saveRestaurant, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/addMore")
-    public List<Restaurant> saveRestaurantsNames(@RequestBody List<Restaurant> restaurants) {
-        return restaurantService.saveRestaurants(restaurants);
+    public ResponseEntity<List<Restaurant>> saveRestaurantsNames(@RequestBody List<Restaurant> restaurants) {
+        List<Restaurant> restaurantList = restaurantService.saveRestaurants(restaurants);
+        return ResponseEntity.status(HttpStatus.CREATED).body(restaurantList);
     }
 
     @GetMapping("/get")
-    public List<Restaurant> fetchAllRestaurant() {
-        return restaurantService.getAllRestants();
+    public ResponseEntity<List<Restaurant>> fetchAllRestaurant() {
+        List<Restaurant> getListOfRestaurant = restaurantService.getAllRestants();
+        return ResponseEntity.status(HttpStatus.CREATED).body(getListOfRestaurant);
     }
 
     @PutMapping("/update/{id}")
-    public Restaurant updateRestaurant(@RequestBody Restaurant restaurant,@PathVariable Integer id) {
-        return restaurantService.updateRestaurant(restaurant,id);
+    public ResponseEntity<Restaurant> updateRestaurant(@RequestBody Restaurant restaurant, @PathVariable int id) {
+        Restaurant updateRestaurant = restaurantService.updateRestaurant(restaurant, id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(updateRestaurant);
     }
 
     @DeleteMapping("/deleteRestaurentId/{restaurantId}")
-    public String deleteRestaurantById(@PathVariable Integer restaurantId) {
-        return restaurantService.deleterestaurant(restaurantId);
+    public ResponseEntity<String> deleteRestaurantById(@PathVariable int restaurantId) {
+        String deleteRestaurant = restaurantService.deleterestaurant(restaurantId);
+        return ResponseEntity.ok(deleteRestaurant);
     }
+
     @GetMapping("/manager/{managerName}")
-    public Restaurant findRestaurantManagerName(@PathVariable String managerName){
-        return restaurantService.findManagerName(managerName);
+    public ResponseEntity<Restaurant> findRestaurantManagerName(@PathVariable String managerName) {
+        Restaurant findRestaurantManagerName = restaurantService.findManagerName(managerName);
+        return ResponseEntity.status(HttpStatus.CREATED).body(findRestaurantManagerName);
     }
 
 }

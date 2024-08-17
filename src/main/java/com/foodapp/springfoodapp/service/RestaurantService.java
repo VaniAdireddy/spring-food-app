@@ -11,10 +11,10 @@ public interface RestaurantService {
 	List<Restaurant> getAllRestants();
 	Restaurant addRestaurant(Restaurant restaurant);
 //    Restaurant updateRestaurant(Restaurant restaurant,Integer id);
-	String deleterestaurant(Integer restaurantId);
+	String deleterestaurant(int restaurantId);
 	Restaurant findManagerName(String managerName);
 
 
-	Restaurant updateRestaurant(Restaurant restaurant, Integer id);
+	Restaurant updateRestaurant(Restaurant restaurant, int id);
 
 }

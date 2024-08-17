@@ -4,6 +4,8 @@ package com.foodapp.springfoodapp.controller;
 import com.foodapp.springfoodapp.entiry.OrderDetails;
 import com.foodapp.springfoodapp.service.OrderDetailService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,27 +16,36 @@ import java.util.List;
 public class OrderDetailController {
 
     private final OrderDetailService orderDetailService;
+
+
     @PostMapping("/add")
-    public OrderDetails addOrderDetails(@RequestBody OrderDetails details){
-        return orderDetailService.saveOrder(details);
-    }
-    @PostMapping("/addMore")
-    public List<OrderDetails> saveOrders(@RequestBody List<OrderDetails> orderDetails) {
-        return orderDetailService.saveOrders(orderDetails);
+    public ResponseEntity<OrderDetails> addOrderDetails(@RequestBody OrderDetails details) {
+        OrderDetails saveOretails = orderDetailService.saveOrder(details);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveOretails);
     }
 
     @GetMapping("/get")
-    public List<OrderDetails> fetchAllOrders() {
-        return orderDetailService.getOrders();
+    public ResponseEntity<List<OrderDetails>> fetchAllOrders() {
+        List<OrderDetails> getOrderDetail = orderDetailService.getOrders();
+        return new ResponseEntity<>(getOrderDetail, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/addMore")
+    public ResponseEntity<List<OrderDetails>> saveOrders(@RequestBody List<OrderDetails> orderDetails) {
+        List<OrderDetails> orderDetailsList = orderDetailService.saveOrders(orderDetails);
+        return ResponseEntity.status(HttpStatus.CREATED).body(orderDetailsList);
     }
 
     @DeleteMapping("/delete/{orderId}")
-    public String deleteOrderById(@PathVariable Integer orderId) {
-        return orderDetailService.deleteorder(orderId);
+    public ResponseEntity<String> deleteOrderById(@PathVariable Integer orderId) {
+        String deleteOrder = orderDetailService.deleteorder(orderId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(deleteOrder);
     }
+
     @PutMapping("/update/{id}")
-    public OrderDetails updateOrder(@RequestBody OrderDetails updateOrderDetails,Integer id){
-        return orderDetailService.updateOrder(updateOrderDetails,id);
+    public ResponseEntity<OrderDetails> updateOrder(@RequestBody OrderDetails updateOrderDetails, @PathVariable int id) {
+        OrderDetails updateDetails = orderDetailService.updateOrder(updateOrderDetails, id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(updateDetails);
     }
 
 }

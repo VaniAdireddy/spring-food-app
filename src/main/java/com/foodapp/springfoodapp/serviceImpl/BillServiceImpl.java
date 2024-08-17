@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +28,12 @@ public class BillServiceImpl implements BillService {
 
     @Override
     public Bill getById(int billId) {
-        return billRepo.findById(billId).orElseThrow(() -> new IllegalStateException("updateBill not found"));
+        Optional<Bill> billOpt = billRepo.findById(billId);
+        if (billOpt.isEmpty()){
+            throw new RuntimeException("Bill Not Found");
+        }
+        return billOpt.get();
+//        .orElseThrow(() -> new IllegalStateException("updateBill not found"));
     }
 
     @Override

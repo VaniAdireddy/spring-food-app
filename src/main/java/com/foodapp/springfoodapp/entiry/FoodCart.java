@@ -20,7 +20,7 @@ public class FoodCart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer cartId;
 
-    public String categoryName;
+    public String cartName;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore

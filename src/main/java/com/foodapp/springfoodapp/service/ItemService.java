@@ -15,7 +15,7 @@ public interface ItemService {
 	
 	Item saveitem(Item item);
 
-    String deleteitemById(Integer itemId);
+    String deleteitemById(int itemId);
 
-	Item updateItems(Item updateitem, Integer id);
+	Item updateItems(Item updateitem, int id);
 }

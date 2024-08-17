@@ -2,9 +2,12 @@ package com.foodapp.springfoodapp.controller;
 
 
 import com.foodapp.springfoodapp.entiry.Bill;
+import com.foodapp.springfoodapp.request.CreateBill;
 import com.foodapp.springfoodapp.service.BillService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,29 +20,41 @@ public class BillController {
 
     private final BillService billService;
 
+
     @PostMapping("/add")
-    public Bill addBill(@RequestBody Bill bill) {
-        return billService.addBill(bill);
+    public ResponseEntity<Bill> addBill(@RequestBody Bill bill) {
+        Bill saveBill = billService.addBill(bill);
+        return new ResponseEntity<>(saveBill, HttpStatus.CREATED);
     }
+
     @PostMapping("/addList")
-    public List<Bill> addBillsList(@RequestBody List<Bill> bills) {
-        return billService.saveAllBills(bills);
+    public ResponseEntity<List<Bill>> addBillsList(@RequestBody List<Bill> bills) {
+        List<Bill> billList = billService.saveAllBills(bills);
+        return new ResponseEntity<>(billList, HttpStatus.CREATED);
     }
+
     @GetMapping("/get")
-    public List<Bill> findAllBills() {
-        return billService.getBills();
+    public ResponseEntity<List<Bill>> findAllBills() {
+        List<Bill> getAllBills = billService.getBills();
+        return new ResponseEntity<>(getAllBills, HttpStatus.CREATED);
     }
+
     @GetMapping("/bill/{billId}")
-    public Bill findById(@PathVariable("billId") int billId) {
-        return billService.getById(billId);
+    public ResponseEntity<Bill> findById(@PathVariable("billId") int billId) {
+        Bill bill = billService.getById(billId);
+        return new ResponseEntity<>(bill, HttpStatus.OK);
     }
+
     @PutMapping("/{id}")
-    public Bill updateBill(@PathVariable Integer id, @RequestBody Bill updateBill) {
-        return billService.updateBill(id, updateBill);
+    public ResponseEntity<Bill> updateBill(@PathVariable Integer id, @RequestBody Bill updateBill) {
+        Bill bill=billService.updateBill(id, updateBill);
+        return new ResponseEntity<>(bill,HttpStatus.CREATED);
     }
+
     @DeleteMapping("/delete/{billId}")
-    public String deleteBill(@PathVariable int billId) {
-        return billService.deleteBill(billId);
+    public ResponseEntity<String> deleteBill(@PathVariable int billId) {
+        String deleteBill=billService.deleteBill(billId);
+        return new ResponseEntity<>(deleteBill,HttpStatus.CREATED);
     }
 
 }

@@ -11,10 +11,6 @@ public interface AddressServices {
     
 
     Address updateAddress(Address updateAddress,int id);
-
-    Address findByCity(String city);
-
-
     List<Address> saveAddress(List<Address> addresses);
 
     Address save(Address address);
@@ -23,5 +19,10 @@ public interface AddressServices {
 
     Address findByAddressId(Integer id);
 
-    void deleteAddress(int addressId);
+    String deleteAddress(int addressId);
+
+//    Address findByPinCode(int pinCode);
+
+
+    Address findByCity(String city);
 }

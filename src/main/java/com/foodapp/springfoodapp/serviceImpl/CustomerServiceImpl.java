@@ -4,6 +4,7 @@ import com.foodapp.springfoodapp.entiry.Customer;
 import com.foodapp.springfoodapp.repository.CustomerRepo;
 import com.foodapp.springfoodapp.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Var;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,17 +18,20 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer add(Customer customer) {
-        return customerRepo.save(customer);
+        Customer saveCustomer= customerRepo.save(customer);
+        return saveCustomer;
     }
 
     @Override
     public List<Customer> saveCustomer(List<Customer> customers) {
-        return customerRepo.saveAll(customers);
+        List<Customer>customerList= customerRepo.saveAll(customers);
+        return customerList;
     }
 
     @Override
     public List<Customer> getCustomer() {
-        return customerRepo.findAll();
+        List<Customer> getAll=customerRepo.findAll();
+        return getAll;
     }
 
     @Override
@@ -53,11 +57,13 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer findByEmail(String email) {
-        return customerRepo.findByEmail(email);
+        Customer customer=customerRepo.findByEmail(email);
+        return customer;
     }
 
     @Override
     public Customer findByMobileNumber(String mobileNumber) {
-        return customerRepo.findByMobileNumber(mobileNumber);
+        Customer findMobile= customerRepo.findByMobileNumber(mobileNumber);
+        return findMobile;
     }
 }

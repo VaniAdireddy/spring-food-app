@@ -49,11 +49,27 @@ public class AddressServicesImpl implements AddressServices {
 //    }
 
     @Override
-    public void deleteAddress(int addressId) {
+    public String deleteAddress(int addressId) {
         Optional<Address> addressOpt = addressRepo.findById(addressId);
         if (addressOpt.isPresent()) {
             addressRepo.deleteById(addressId);
         }
+        return "BIll Deleted";
+    }
+
+//    @Override
+//    public Address findByPinCode(int pinCode) {
+//        Address address = addressRepo.findByPinCode(pinCode);
+//        return address;
+//    }
+
+    @Override
+    public Address findByCity(String city) {
+        Optional<Address> address = Optional.ofNullable(addressRepo.findByCity(city));
+        if (address.isEmpty()) {
+            throw new RuntimeException("Not Found");
+        }
+        return address.get();
     }
 
 
@@ -84,11 +100,6 @@ public class AddressServicesImpl implements AddressServices {
 //        address.setPinCode(updateAddress.getPinCode());
         addressRepo.save(address);
         return address;
-    }
-
-    @Override
-    public Address findByCity(String city) {
-        return addressRepo.findByCity(city);
     }
 
 

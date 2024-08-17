@@ -16,5 +16,5 @@ public interface OrderDetailService {
 
 	OrderDetails saveOrder(OrderDetails details);
 
-    OrderDetails updateOrder(OrderDetails updateOrderDetails, Integer id);
+    OrderDetails updateOrder(OrderDetails updateOrderDetails, int id);
 }

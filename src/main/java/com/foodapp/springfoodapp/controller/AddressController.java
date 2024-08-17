@@ -47,10 +47,9 @@ public class AddressController {
     }
 
     @DeleteMapping("/delete/{addressId}")
-    public ResponseEntity<ApiResponse> deleteBill(@PathVariable int addressId) {
-        addressServices.deleteAddress(addressId);
-        ApiResponse response = new ApiResponse("Deleted Success", true);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    public ResponseEntity<String> deleteBill(@PathVariable int addressId) {
+        String deleteAddress=addressServices.deleteAddress(addressId);
+        return new ResponseEntity<>(deleteAddress, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
@@ -64,10 +63,11 @@ public class AddressController {
         Address address = addressServices.findByCity(city);
         return new ResponseEntity<>(address, HttpStatus.CREATED);
     }
-//
-//    @PostMapping("/findByPinCode/{pinCode}")
-//    public Address findByPinCode (@PathVariable String pinCode){
-//        return addressServices.findByPinCode(pinCode);
+
+//    @GetMapping("/{pinCode}/findByPinCode")
+//    public ResponseEntity<Address> findByPinCode (@PathVariable int pinCode){
+//        Address address= addressServices.findByPinCode(pinCode);
+//        return new ResponseEntity<>(address,HttpStatus.CREATED);
 //    }
 
 

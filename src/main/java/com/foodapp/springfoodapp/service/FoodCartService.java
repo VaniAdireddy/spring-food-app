@@ -1,6 +1,7 @@
 package com.foodapp.springfoodapp.service;
 
 import com.foodapp.springfoodapp.entiry.FoodCart;
+import com.foodapp.springfoodapp.exception.FoodCartException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,4 +19,5 @@ public interface FoodCartService {
 
 	FoodCart updateFoodCartId(FoodCart foodCart, Integer id);
 
+    FoodCart getfoodByid(int foodId) ;
 }

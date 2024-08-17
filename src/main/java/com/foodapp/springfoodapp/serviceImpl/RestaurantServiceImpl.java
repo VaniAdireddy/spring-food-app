@@ -31,7 +31,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
 
     @Override
-    public String deleterestaurant(Integer restaurantId) {
+    public String deleterestaurant(int restaurantId) {
         restaurantRepo.deleteById(restaurantId);
         return "delete SuccessFull!";
     }
@@ -42,14 +42,22 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public Restaurant updateRestaurant(Restaurant restaurant, Integer id) {
+    public Restaurant updateRestaurant(Restaurant restaurant, int id) {
         var exits = restaurantRepo.findById(restaurant.getRestaurantId())
                 .orElseThrow(() -> new IllegalArgumentException("There iss no Id Please Create"));
 
-        exits.setRestaurantId(restaurant.getRestaurantId());
-        exits.setRestaurantName(restaurant.getRestaurantName());
-        exits.setManagerName(restaurant.getManagerName());
-        exits.setContactNumber(restaurant.getContactNumber());
+        if (exits.getManagerName() != null) {
+            exits.setManagerName(restaurant.getManagerName());
+        }
+
+        if (exits.getContactNumber() != null) {
+            exits.setContactNumber(restaurant.getContactNumber());
+        }
+
+        if (exits.getRestaurantName() != null) {
+            exits.setRestaurantName(restaurant.getRestaurantName());
+        }
+
         restaurantRepo.save(exits);
         return exits;
     }

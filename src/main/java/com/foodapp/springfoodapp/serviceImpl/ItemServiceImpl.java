@@ -17,33 +17,41 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public List<Item> saveitems(List<Item> items) {
-        return itemRepo.saveAll(items);
+        List<Item> itemList = itemRepo.saveAll(items);
+        return itemList;
     }
 
     @Override
     public List<Item> getItems() {
-        return itemRepo.findAll();
+        List<Item> getItemList = itemRepo.findAll();
+        return getItemList;
     }
 
     @Override
     public Item saveitem(Item item) {
-        return itemRepo.save(item);
+        Item saveItem = itemRepo.save(item);
+        return saveItem;
     }
 
     @Override
-    public String deleteitemById(Integer itemId) {
+    public String deleteitemById(int itemId) {
         itemRepo.deleteById(itemId);
         return ":your Item had been deleted safely";
     }
 
     @Override
-    public Item updateItems(Item updateitem, Integer id) {
+    public Item updateItems(Item updateitem, int id) {
         Item existByitem = itemRepo.findById(updateitem.getItemId())
                 .orElseThrow(() -> new RuntimeException("can't get your ItemId please try to create items"));
-        existByitem.setItemName(updateitem.getItemName());
-        existByitem.setCost(updateitem.getCost());
-        existByitem.setCategory(updateitem.getCategory());
-        existByitem.setQuantity(updateitem.getQuantity());
+
+        if (existByitem.getItemName() != null) {
+            existByitem.setItemName(updateitem.getItemName());
+        }
+
+//        existByitem.setItemName(updateitem.getItemName());
+//        existByitem.setCost(updateitem.getCost());
+//        existByitem.setCategory(updateitem.getCategory());
+//        existByitem.setQuantity(updateitem.getQuantity());
 
         itemRepo.save(existByitem);
         return existByitem;

@@ -18,9 +18,9 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public int addressId;
-    @Size(min = 7,max = 40)
+//    @Size(min = 7,max = 40)
     public String area;
-    @Size(min = 7,max = 40)
+//    @Size(min = 7,max = 40)
     public String city;
     public String state;
     public String country;

@@ -40,8 +40,10 @@ public class CategoryServiceImpl implements CategoryService {
     public Category updatecategory(Category updateCategory, Integer id) {
         Category exitCategory = categoryRepo.findById(updateCategory.getCategoryId())
                 .orElseThrow(() -> new IllegalArgumentException("you need to create category"));
-        exitCategory.setCategoryId(updateCategory.getCategoryId());
-        exitCategory.setCategoryName(updateCategory.getCategoryName());
+        if (exitCategory.getCategoryName() != null) {
+            exitCategory.setCategoryName(updateCategory.getCategoryName());
+        }
+
         categoryRepo.save(exitCategory);
         return exitCategory;
     }

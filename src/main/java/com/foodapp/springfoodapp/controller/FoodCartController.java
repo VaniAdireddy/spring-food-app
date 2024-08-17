@@ -1,8 +1,12 @@
 package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.FoodCart;
+import com.foodapp.springfoodapp.exception.FoodCartException;
 import com.foodapp.springfoodapp.service.FoodCartService;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.ast.Var;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,28 +16,41 @@ import java.util.List;
 @RequestMapping("/api/food")
 public class FoodCartController {
 
-	private final FoodCartService cartService;
+    private final FoodCartService cartService;
 
-	@PostMapping("/add")
-	public FoodCart saveCart(@RequestBody FoodCart foodCart) {
-		return cartService.savecart(foodCart);
-	}
-	@PostMapping("/addMore")
-	public List<FoodCart> addFoods(@RequestBody List<FoodCart> foodCarts) {
-		return cartService.savefoods(foodCarts);
-	}
-	@GetMapping("/get")
-	public List<FoodCart> fetchAllFoods() {
-		return cartService.getfood();
-	}
+    @PostMapping("/save")
+    public ResponseEntity<FoodCart> saveCart(@RequestBody FoodCart foodCart) {
+        FoodCart saveCart = cartService.savecart(foodCart);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveCart);
+    }
 
-	@DeleteMapping("/delete{cartId}")
-	public String deleteFoodid(@PathVariable("cartId") Integer cartId ){
-		return cartService.deleteId(cartId);
-	}
+    @PostMapping("/addMore")
+    public ResponseEntity<List<FoodCart>> addFoods(@RequestBody List<FoodCart> foodCarts) {
+        List<FoodCart> foodCartList = cartService.savefoods(foodCarts);
+        return ResponseEntity.status(HttpStatus.CREATED).body(foodCartList);
+    }
 
-	@PutMapping("/update/{id}")
-	public FoodCart updateFoodcart(@RequestBody FoodCart foodCart,@RequestParam Integer id){
-		return cartService.updateFoodCartId(foodCart,id);
-	}
+    @GetMapping("/{foodId}")
+    public ResponseEntity<FoodCart> getFoodById(@PathVariable int foodId)  {
+        FoodCart getId = cartService.getfoodByid(foodId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(getId);
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<List<FoodCart>> fetchAllFoods() {
+        List<FoodCart> foodCartList = cartService.getfood();
+        return ResponseEntity.status(HttpStatus.CREATED).body(foodCartList);
+    }
+
+    @DeleteMapping("/delete{cartId}")
+    public ResponseEntity<String> deleteFoodid(@PathVariable("cartId") Integer cartId) {
+        String deleteFoodId=cartService.deleteId(cartId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(deleteFoodId);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<FoodCart> updateFoodcart(@RequestBody FoodCart foodCart, @RequestParam Integer id) {
+        FoodCart updateFoodCart=cartService.updateFoodCartId(foodCart, id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(updateFoodCart);
+    }
 }

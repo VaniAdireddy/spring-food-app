@@ -3,6 +3,8 @@ package com.foodapp.springfoodapp.controller;
 import com.foodapp.springfoodapp.entiry.Customer;
 import com.foodapp.springfoodapp.service.CustomerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,36 +17,44 @@ public class CustomerController {
     private final CustomerService customerService;
 
     @PostMapping("/add")
-    public Customer addCustomer(@RequestBody Customer customer) {
-        return customerService.add(customer);
+    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer) {
+        Customer saveCustomer = customerService.add(customer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(saveCustomer);
     }
 
     @PostMapping("/addMore")
-    public List<Customer> addCustomer(@RequestBody List<Customer> customers) {
-        return customerService.saveCustomer(customers);
+    public ResponseEntity<List<Customer>> addCustomer(@RequestBody List<Customer> customers) {
+        List<Customer> customerList = customerService.saveCustomer(customers);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(customerList);
     }
 
     @GetMapping("/get")
-    public List<Customer> findAllCustomers() {
-        return customerService.getCustomer();
+    public ResponseEntity<List<Customer>> findAllCustomers() {
+        List<Customer> getCustomerList=customerService.getCustomer();
+        return new ResponseEntity<>(getCustomerList,HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/delete/{customerId}")
-    public String deleteById(@PathVariable Integer customerId){
-        customerService.deleteCustomerByid(customerId);
-        return "delete success";
+    public ResponseEntity<String> deleteById(@PathVariable Integer customerId) {
+        String delete=customerService.deleteCustomerByid(customerId);
+        return ResponseEntity.status(HttpStatus.CREATED).body(delete);
     }
 
     @PutMapping("/updateCustomer/{customerId}")
-    public Customer updateCustomer(@PathVariable Integer customerId, @RequestBody Customer updateCustomer){
-        return customerService.updateCustomer(customerId, updateCustomer);
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Integer customerId, @RequestBody Customer updateCustomer) {
+        Customer customer=customerService.updateCustomer(customerId, updateCustomer);
+        return ResponseEntity.status(HttpStatus.CREATED).body(customer);
     }
+
     @GetMapping("/findEmail/{email}")
-    public Customer findByCustomerEmail(@PathVariable String email){
-        return customerService.findByEmail(email);
+    public ResponseEntity<Customer> findByCustomerEmail(@PathVariable String email) {
+        Customer customer=customerService.findByEmail(email);
+        return ResponseEntity.status(HttpStatus.CREATED).body(customer);
     }
+
     @GetMapping("/findMobile/{mobileNumber}")
-    public Customer findByMobileNumber(@PathVariable String mobileNumber){
-        return customerService.findByMobileNumber(mobileNumber);
+    public ResponseEntity<Customer> findByMobileNumber(@PathVariable String mobileNumber) {
+        Customer customer=customerService.findByMobileNumber(mobileNumber);
+        return new ResponseEntity<>(customer,HttpStatus.CREATED);
     }
 }

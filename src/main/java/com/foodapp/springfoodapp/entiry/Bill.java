@@ -22,7 +22,7 @@ public class Bill {
     @DateTimeFormat
     public LocalDateTime billDate;
     public Double totalCost;
-    public Integer totalItem;
+    public int totalItem;
 
 
     @OneToOne(cascade = CascadeType.ALL)
