@@ -2,7 +2,6 @@ package com.foodapp.springfoodapp.serviceImpl;
 
 
 import com.foodapp.springfoodapp.entiry.FoodCart;
-import com.foodapp.springfoodapp.exception.FoodCartException;
 import com.foodapp.springfoodapp.repository.FoodCartRepo;
 import com.foodapp.springfoodapp.service.FoodCartService;
 import lombok.RequiredArgsConstructor;

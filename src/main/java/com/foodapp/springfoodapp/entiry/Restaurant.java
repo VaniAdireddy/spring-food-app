@@ -27,9 +27,10 @@ public class Restaurant {
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
-    @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = FoodCart.class, cascade = CascadeType.ALL)
+    private List<FoodCart> foodCart;
 //	@JoinColumn
-    private List<Item> itemList = new ArrayList<>();
+//    private List<Item> itemList = new ArrayList<>();
 
 
 }

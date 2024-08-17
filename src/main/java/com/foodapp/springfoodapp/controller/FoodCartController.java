@@ -1,10 +1,8 @@
 package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.FoodCart;
-import com.foodapp.springfoodapp.exception.FoodCartException;
 import com.foodapp.springfoodapp.service.FoodCartService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Var;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
