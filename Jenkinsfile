@@ -12,6 +12,10 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Srinu-rj/spring-food-app.git'
             }
         }
-
+        stage('Compile') {
+            steps {
+                sh "mvn compile"
+            }
+        }
     }
 }
