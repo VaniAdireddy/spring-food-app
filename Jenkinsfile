@@ -17,11 +17,15 @@ pipeline {
                 sh "mvn compile"
             }
         }
-
-        stage('Test') {
+        stage('Build and Test') {
             steps {
-                  sh "mvn test"
+                sh 'mvn clean test'
             }
         }
+//         stage('Test') {
+//             steps {
+//                   sh "mvn test"
+//             }
+//         }
     }
 }
