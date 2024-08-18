@@ -144,7 +144,7 @@
                 </configuration>
             </plugin>
         </plugins>
-        <finalName>docker-spring-image</finalName>
+<!--        <finalName>docker-spring-image</finalName>-->
     </build>
 
 </project>
