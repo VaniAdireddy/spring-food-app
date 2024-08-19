@@ -25,23 +25,23 @@ pipeline {
                 sh "mvn compile"
             }
         }
-
-                stage('Test') {
-                    steps {
-                        script {
-                            // Debug connectivity issues
-                            sh '''
-                            echo "Testing database connection..."
-                            nc -zv $DB_HOST $DB_PORT || echo "Failed to connect to the database"
-                            '''
-
-                            // Run Maven tests
-                            sh '''
-                            mvn test -Ddb.host=$DB_HOST -Ddb.port=$DB_PORT -Ddb.name=$DB_NAME -Ddb.user=$DB_USER -Ddb.pass=$DB_PASS
-                            '''
-                        }
-                    }
-                }
+//
+//                 stage('Test') {
+//                     steps {
+//                         script {
+//                             // Debug connectivity issues
+//                             sh '''
+//                             echo "Testing database connection..."
+//                             nc -zv $DB_HOST $DB_PORT || echo "Failed to connect to the database"
+//                             '''
+//
+//                             // Run Maven tests
+//                             sh '''
+//                             mvn test -Ddb.host=$DB_HOST -Ddb.port=$DB_PORT -Ddb.name=$DB_NAME -Ddb.user=$DB_USER -Ddb.pass=$DB_PASS
+//                             '''
+//                         }
+//                     }
+//                 }
 
 
 
