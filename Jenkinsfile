@@ -6,14 +6,14 @@ pipeline {
         maven 'maven3'
     }
 
-    environment {
-            DB_HOST = 'jdbc:mysql://localhost'   // Replace with your MySQL server host
-            DB_PORT = '3306'                 // Default MySQL port
-            DB_NAME = 'foodapp'              // Replace with your database name
-            DB_USER = 'root'                 // Your MySQL username
-            DB_PASS = 'raju'                 // Your MySQL password
-    }
-
+//     environment {
+//             DB_HOST = 'jdbc:mysql://localhost'   // Replace with your MySQL server host
+//             DB_PORT = '3306'                 // Default MySQL port
+//             DB_NAME = 'foodapp'              // Replace with your database name
+//             DB_USER = 'root'                 // Your MySQL username
+//             DB_PASS = 'raju'                 // Your MySQL password
+//     }
+//
     stages {
         stage('Git Check Out') {
             steps {
@@ -46,10 +46,10 @@ pipeline {
 
 
 
-//         stage('Test') {
-//             steps {
-//                 sh "mvn test"
-//             }
-//         }
+        stage('Test') {
+            steps {
+                sh "mvn test"
+            }
+        }
     }
 }
