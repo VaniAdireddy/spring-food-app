@@ -21,15 +21,16 @@ import java.util.Collections;
 @EnableWebSecurity
 public class AppConfig {
 
+
     @Bean
-//    @Order(1)
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//  @Order(1)
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(Authorize -> Authorize
-//                        .requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
-//
-//                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
+
+                        .requestMatchers("/api/**").authenticated()
 
                         .anyRequest().permitAll()
 
@@ -38,34 +39,12 @@ public class AppConfig {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.disable());
 
-
         return http.build();
 
     }
 
-    // CORS Configuration
-//    private CorsConfigurationSource corsConfigurationSource() {
-//        return new CorsConfigurationSource() {
-//            @Override
-//            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
-//                CorsConfiguration cfg = new CorsConfiguration();
-//                cfg.setAllowedOrigins(Arrays.asList(
-//                        "http://localhost:3000",
-//                        "https://zosh-food.vercel.app",
-//                        "http://localhost:4200"
-//                ));
-//                cfg.setAllowedMethods(Collections.singletonList("*"));
-//                cfg.setAllowCredentials(true);
-//                cfg.setAllowedHeaders(Collections.singletonList("*"));
-//                cfg.setExposedHeaders(Arrays.asList("Authorization"));
-//                cfg.setMaxAge(3600L);
-//                return cfg;
-//            }
-//        };
-//    }
-
     @Bean
-    PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(20);
     }
 

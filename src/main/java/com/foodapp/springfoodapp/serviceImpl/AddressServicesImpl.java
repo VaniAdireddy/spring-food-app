@@ -34,7 +34,7 @@ public class AddressServicesImpl implements AddressServices {
     }
 
     @Override
-    public Address findByAddressId(Integer id) {
+    public Address findByAddressId(int id) {
         Optional<Address> address = addressRepo.findById(id);
         if (address.isEmpty()) {
             throw new IllegalArgumentException("Address Not Found");

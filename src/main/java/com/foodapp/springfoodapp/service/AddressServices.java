@@ -17,7 +17,7 @@ public interface AddressServices {
 
     List<Address> getAll();
 
-    Address findByAddressId(Integer id);
+    Address findByAddressId(int id);
 
     String deleteAddress(int addressId);
 
@@ -25,4 +25,5 @@ public interface AddressServices {
 
 
     Address findByCity(String city);
+
 }
