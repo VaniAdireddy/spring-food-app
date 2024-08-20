@@ -93,11 +93,7 @@ public class AddressServicesImpl implements AddressServices {
         if (address.getPinCode() != null) {
             address.setCountry(updateAddress.getCountry());
         }
-//        address.setState(updateAddress.getState());
-//        address.setCity(updateAddress.getCity());
-//        address.setArea(updateAddress.getArea());
-//        address.setCountry(updateAddress.getCountry());
-//        address.setPinCode(updateAddress.getPinCode());
+
         addressRepo.save(address);
         return address;
     }
