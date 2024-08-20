@@ -1,13 +1,13 @@
 package com.foodapp.springfoodapp.service;
 
 import com.foodapp.springfoodapp.entiry.Bill;
+import com.foodapp.springfoodapp.usersecurity.modual.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public interface BillService {
-
 	List<Bill> getBills();
 
 	Bill addBill(Bill bill);

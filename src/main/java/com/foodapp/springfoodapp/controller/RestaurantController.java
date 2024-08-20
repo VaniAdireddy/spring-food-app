@@ -28,6 +28,7 @@ public class RestaurantController {
         return ResponseEntity.status(HttpStatus.CREATED).body(restaurantList);
     }
 
+
     @GetMapping("/get")
     public ResponseEntity<List<Restaurant>> fetchAllRestaurant() {
         List<Restaurant> getListOfRestaurant = restaurantService.getAllRestants();

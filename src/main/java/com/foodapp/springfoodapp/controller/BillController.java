@@ -2,12 +2,16 @@ package com.foodapp.springfoodapp.controller;
 
 
 import com.foodapp.springfoodapp.entiry.Bill;
+import com.foodapp.springfoodapp.exception.UserException;
 import com.foodapp.springfoodapp.request.CreateBill;
 import com.foodapp.springfoodapp.service.BillService;
+import com.foodapp.springfoodapp.usersecurity.modual.User;
+import com.foodapp.springfoodapp.usersecurity.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,14 +51,15 @@ public class BillController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Bill> updateBill(@PathVariable Integer id, @RequestBody Bill updateBill) {
-        Bill bill=billService.updateBill(id, updateBill);
-        return new ResponseEntity<>(bill,HttpStatus.CREATED);
+        Bill bill = billService.updateBill(id, updateBill);
+        return new ResponseEntity<>(bill, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete/{billId}")
     public ResponseEntity<String> deleteBill(@PathVariable int billId) {
-        String deleteBill=billService.deleteBill(billId);
-        return new ResponseEntity<>(deleteBill,HttpStatus.CREATED);
+
+        String deleteBill = billService.deleteBill(billId);
+        return new ResponseEntity<>(deleteBill, HttpStatus.CREATED);
     }
 
 }
