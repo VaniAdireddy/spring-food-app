@@ -13,7 +13,6 @@ spec:
     requests:
       storage: 1Gi    #This will tell kubernetes about the amount of space we are trying to claim.
 ---
-
 #todo  Deployment specification begins here
 apiVersion: apps/v1
 kind: Deployment
