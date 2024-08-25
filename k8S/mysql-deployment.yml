@@ -39,9 +39,9 @@ spec:
           imagePullPolicy: "IfNotPresent"
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: raju
+              value: 1234
             - name: MYSQL_DATABASE
-              value: foodapp
+              value: employeedb
           ports:
             - containerPort: 3306
               name: mysql
