@@ -1,6 +1,6 @@
 FROM openjdk:17
-EXPOSE 8080
-COPY target/docker-spring-image.jar .
-ENTRYPOINT ["java","-jar","/docker-spring-image.jar"]
+EXPOSE 8998
+COPY target/spring-image.jar .
+ENTRYPOINT ["java","-jar","/spring-image.jar"]
 
 

@@ -149,7 +149,7 @@
             </plugin>
         </plugins>
 
-        <finalName>docker-spring-image</finalName>
+        <finalName>spring-image</finalName>
     </build>
 
 </project>
