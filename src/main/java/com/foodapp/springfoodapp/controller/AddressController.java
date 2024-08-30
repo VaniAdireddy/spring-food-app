@@ -24,16 +24,19 @@ public class AddressController {
         List<Address> address = addressServices.saveAddress(addresses);
         return new ResponseEntity<>(address, HttpStatus.CREATED);
     }
+
     @PostMapping("/save")
     public ResponseEntity<Address> saveAddress( @RequestBody Address address) throws UserException {
         Address saveAddressDemo = addressServices.save(address);
         return new ResponseEntity<>(saveAddressDemo, HttpStatus.CREATED);
     }
+
     @GetMapping("/get/all")
     public ResponseEntity<List<Address>> getAllAddress()  {
         List<Address> address = addressServices.getAll();
         return new ResponseEntity<>(address, HttpStatus.CREATED);
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<Address> findByAddressId(@PathVariable int id) {
         Address address = addressServices.findByAddressId(id);
