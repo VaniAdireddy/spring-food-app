@@ -3,6 +3,7 @@ package com.foodapp.springfoodapp.security.controller;
 
 import com.foodapp.springfoodapp.exception.UserException;
 import com.foodapp.springfoodapp.security.Modual.USER_ROLE;
+import com.foodapp.springfoodapp.security.Modual.User;
 import com.foodapp.springfoodapp.security.config.JwtProvider;
 import com.foodapp.springfoodapp.security.repository.UserRepository;
 import com.foodapp.springfoodapp.security.request.LoginRequest;
@@ -18,7 +19,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,7 +40,6 @@ public class AuthController {
     private final JwtProvider jwtProvider;
     private final CustomeUserServiceImplementation customUserDetails;
 
-//    private PasswordResetTokenService passwordResetTokenService;
 
 
     @PostMapping("/signup")

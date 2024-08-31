@@ -1,6 +1,7 @@
 package com.foodapp.springfoodapp.security.Modual;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,6 +20,7 @@ public class User {
 
     private String fullName;
     private String email;
+    @JsonProperty
     private String password;
 
     private USER_ROLE role;

@@ -14,7 +14,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/address")
 public class AddressController {
-
+//@RequestHeader("Authorization")
+//@RequestHeader("Authorization")String jwt
 
     private final AddressServices addressServices;
 
@@ -26,13 +27,13 @@ public class AddressController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Address> saveAddress( @RequestBody Address address) throws UserException {
+    public ResponseEntity<Address> saveAddress(@RequestBody Address address) {
         Address saveAddressDemo = addressServices.save(address);
         return new ResponseEntity<>(saveAddressDemo, HttpStatus.CREATED);
     }
 
     @GetMapping("/get/all")
-    public ResponseEntity<List<Address>> getAllAddress()  {
+    public ResponseEntity<List<Address>> getAllAddress() {
         List<Address> address = addressServices.getAll();
         return new ResponseEntity<>(address, HttpStatus.CREATED);
     }
@@ -48,9 +49,10 @@ public class AddressController {
         String deleteAddress = addressServices.deleteAddress(addressId);
         return new ResponseEntity<>(deleteAddress, HttpStatus.CREATED);
     }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<Address> updateAddress(@PathVariable int id, @RequestBody Address updateAddress) {
-        Address address=addressServices.updateAddress(updateAddress, id);
+        Address address = addressServices.updateAddress(updateAddress, id);
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
 
