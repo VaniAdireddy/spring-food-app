@@ -24,7 +24,6 @@ public class Bill {
     public Double totalCost;
     public int totalItem;
 
-
     @OneToOne(cascade = CascadeType.ALL)
     public OrderDetails order;
 

@@ -3,6 +3,7 @@ package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.Item;
 import com.foodapp.springfoodapp.service.ItemService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,13 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping("/addItem")
-    public ResponseEntity<Item> item(@RequestBody Item item) {
+    public ResponseEntity<Item> item(@RequestBody @Valid Item item) {
         Item saveItem = itemService.saveitem(item);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveItem);
     }
 
     @PostMapping("/addMore")
-    public ResponseEntity<List<Item>> addItems(@RequestBody List<Item> items) {
+    public ResponseEntity<List<Item>> addItems(@RequestBody @Valid List<Item> items) {
         List<Item> itemList = itemService.saveitems(items);
         return ResponseEntity.status(HttpStatus.CREATED).body(itemList);
     }
@@ -42,7 +43,7 @@ public class ItemController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Item> updateItem(@RequestBody Item updateitem,@PathVariable int id) {
+    public ResponseEntity<Item> updateItem(@RequestBody Item updateitem, @PathVariable int id) {
         Item updateItems = itemService.updateItems(updateitem, id);
         return ResponseEntity.status(HttpStatus.CREATED).body(updateitem);
     }

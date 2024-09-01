@@ -3,6 +3,7 @@ package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.OrderDetails;
 import com.foodapp.springfoodapp.service.OrderDetailService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class OrderDetailController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<OrderDetails> addOrderDetails(@RequestBody OrderDetails details) {
+    public ResponseEntity<OrderDetails> addOrderDetails(@RequestBody @Valid OrderDetails details) {
         OrderDetails saveOretails = orderDetailService.saveOrder(details);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveOretails);
     }
@@ -31,7 +32,7 @@ public class OrderDetailController {
     }
 
     @PostMapping("/addMore")
-    public ResponseEntity<List<OrderDetails>> saveOrders(@RequestBody List<OrderDetails> orderDetails) {
+    public ResponseEntity<List<OrderDetails>> saveOrders(@RequestBody @Valid List<OrderDetails> orderDetails) {
         List<OrderDetails> orderDetailsList = orderDetailService.saveOrders(orderDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(orderDetailsList);
     }

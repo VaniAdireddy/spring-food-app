@@ -4,6 +4,8 @@ package com.foodapp.springfoodapp.entiry;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,12 +22,14 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int customerId;
     @Column(name = "FullName")
-    @Size(min = 5,max = 25)
+    @Size(min = 5, max = 25)
     public String fullName;
+    @Min(18)
+    @Max(65)
     public Integer age;
     public String gender;
     public String mobileNumber;
-    @Email
+    @Email(message = "Email Must be Filed")
     @Column(unique = true)
     public String email;
 

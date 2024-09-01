@@ -3,6 +3,7 @@ package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.Bill;
 import com.foodapp.springfoodapp.service.BillService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,13 +22,13 @@ public class BillController {
 
 
     @PostMapping("/add")
-    public ResponseEntity<Bill> addBill(@RequestBody Bill bill) {
+    public ResponseEntity<Bill> addBill(@RequestBody @Valid Bill bill) {
         Bill saveBill = billService.addBill(bill);
         return new ResponseEntity<>(saveBill, HttpStatus.CREATED);
     }
 
     @PostMapping("/addList")
-    public ResponseEntity<List<Bill>> addBillsList(@RequestBody List<Bill> bills) {
+    public ResponseEntity<List<Bill>> addBillsList(@RequestBody @Valid List<Bill> bills) {
         List<Bill> billList = billService.saveAllBills(bills);
         return new ResponseEntity<>(billList, HttpStatus.CREATED);
     }

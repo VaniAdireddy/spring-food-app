@@ -2,7 +2,7 @@ package com.foodapp.springfoodapp.entiry;
 
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,15 +16,19 @@ import lombok.NoArgsConstructor;
 public class Address {
     //todo data layer
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int addressId;
-//    @Size(min = 7,max = 40)
+    @Min(5)
+    @NotNull(message = "shouldn't be Null Area")
     public String area;
-//    @Size(min = 7,max = 40)
+    @NotNull(message = "shouldn't be Null City")
     public String city;
+    @NotNull(message = "shouldn't be Null State")
     public String state;
+    @NotNull(message = "shouldn't be Null Country")
     public String country;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
+//    @Min(6)
     public String pinCode;
 }
 

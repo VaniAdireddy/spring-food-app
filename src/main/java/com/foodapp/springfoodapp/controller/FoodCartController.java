@@ -2,6 +2,7 @@ package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.FoodCart;
 import com.foodapp.springfoodapp.service.FoodCartService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +18,13 @@ public class FoodCartController {
     private final FoodCartService cartService;
 
     @PostMapping("/save")
-    public ResponseEntity<FoodCart> saveCart(@RequestBody FoodCart foodCart) {
+    public ResponseEntity<FoodCart> saveCart(@RequestBody @Valid FoodCart foodCart) {
         FoodCart saveCart = cartService.savecart(foodCart);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveCart);
     }
 
     @PostMapping("/addMore")
-    public ResponseEntity<List<FoodCart>> addFoods(@RequestBody List<FoodCart> foodCarts) {
+    public ResponseEntity<List<FoodCart>> addFoods(@RequestBody @Valid List<FoodCart> foodCarts) {
         List<FoodCart> foodCartList = cartService.savefoods(foodCarts);
         return ResponseEntity.status(HttpStatus.CREATED).body(foodCartList);
     }

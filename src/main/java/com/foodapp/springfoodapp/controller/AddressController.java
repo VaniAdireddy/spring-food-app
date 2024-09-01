@@ -3,6 +3,7 @@ package com.foodapp.springfoodapp.controller;
 import com.foodapp.springfoodapp.entiry.Address;
 import com.foodapp.springfoodapp.exception.UserException;
 import com.foodapp.springfoodapp.service.AddressServices;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,13 +22,13 @@ public class AddressController {
 
 
     @PostMapping("/add/list/address")
-    public ResponseEntity<List<Address>> saveAddress(@RequestBody List<Address> addresses) {
+    public ResponseEntity<List<Address>> saveAddress(@RequestBody @Valid List<Address> addresses) {
         List<Address> address = addressServices.saveAddress(addresses);
         return new ResponseEntity<>(address, HttpStatus.CREATED);
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Address> saveAddress(@RequestBody Address address) {
+    public ResponseEntity<Address> saveAddress(@RequestBody @Valid Address address) {
         Address saveAddressDemo = addressServices.save(address);
         return new ResponseEntity<>(saveAddressDemo, HttpStatus.CREATED);
     }

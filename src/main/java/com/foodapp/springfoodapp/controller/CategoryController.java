@@ -2,6 +2,7 @@ package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.Category;
 import com.foodapp.springfoodapp.service.CategoryService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,13 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping("/addCategory")
-    public ResponseEntity<Category> addCategory(@RequestBody Category category) {
+    public ResponseEntity<Category> addCategory(@RequestBody @Valid Category category) {
         Category saveCategory = categoryService.addCategory(category);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveCategory);
     }
 
     @PostMapping("/addMore")
-    public ResponseEntity<List<Category>> addListCategory(@RequestBody List<Category> categories) {
+    public ResponseEntity<List<Category>> addListCategory(@RequestBody @Valid List<Category> categories) {
         List<Category> categoryList = categoryService.saveCategory(categories);
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryList);
     }

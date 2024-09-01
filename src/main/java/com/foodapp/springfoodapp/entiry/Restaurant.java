@@ -2,6 +2,9 @@ package com.foodapp.springfoodapp.entiry;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,10 +21,13 @@ public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int restaurantId;
+    @NotNull(message = "RestaurantName shouldn't be Null ")
     private String restaurantName;
+    @NotNull(message = "ManagerName shouldn't be Null ")
     private String managerName;
+    @NotNull
+    @Pattern(regexp = "^\\d{10}$")
     private String contactNumber;
-
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
@@ -29,8 +35,6 @@ public class Restaurant {
 
     @OneToMany(targetEntity = FoodCart.class, cascade = CascadeType.ALL)
     private List<FoodCart> foodCart;
-//	@JoinColumn
-//    private List<Item> itemList = new ArrayList<>();
 
 
 }
