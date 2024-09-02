@@ -7,6 +7,7 @@ import com.foodapp.springfoodapp.service.AddressServices;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,9 +16,11 @@ import java.util.Optional;
 public class AddressServicesImpl implements AddressServices {
 
     private final AddressRepo addressRepo;
+    List<Address> addresses = new ArrayList<>();
 
     //todo -> error "Query did not return a unique result: 3 results were returned",
     @Override
+
     public List<Address> saveAddress(List<Address> addresses) {
         return addressRepo.saveAll(addresses);
     }
@@ -35,6 +38,11 @@ public class AddressServicesImpl implements AddressServices {
 
     @Override
     public Address findByAddressId(int id) {
+//
+//        addresses.stream()
+//                .filter(find -> find.addressId == id)
+//                .findFirst();
+//
         Optional<Address> address = addressRepo.findById(id);
         if (address.isEmpty()) {
             throw new IllegalArgumentException("Address Not Found");

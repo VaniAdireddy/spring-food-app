@@ -14,10 +14,6 @@ import java.util.List;
 public class RestaurantServiceImpl implements RestaurantService {
     private final RestaurantRepo restaurantRepo;
 
-    @Override
-    public Restaurant addRestaurant(Restaurant restaurant) {
-        return restaurantRepo.save(restaurant);
-    }
 
     @Override
     public List<Restaurant> saveRestaurants(List<Restaurant> restaurants) {
@@ -60,6 +56,13 @@ public class RestaurantServiceImpl implements RestaurantService {
 
         restaurantRepo.save(exits);
         return exits;
+    }
+
+    @Override
+    public Restaurant saveRestaurant(Restaurant restaurant) {
+        Restaurant restaurantSave=restaurantRepo.save(restaurant);
+        return restaurantSave;
+
     }
 
 
