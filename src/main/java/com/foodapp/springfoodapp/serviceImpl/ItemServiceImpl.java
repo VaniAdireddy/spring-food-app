@@ -2,6 +2,7 @@ package com.foodapp.springfoodapp.serviceImpl;
 
 import com.foodapp.springfoodapp.entiry.Item;
 import com.foodapp.springfoodapp.repository.ItemRepo;
+import com.foodapp.springfoodapp.security.Modual.User;
 import com.foodapp.springfoodapp.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item saveitem(Item item) {
+
         Item saveItem = itemRepo.save(item);
         return saveItem;
     }
@@ -56,4 +58,12 @@ public class ItemServiceImpl implements ItemService {
         itemRepo.save(existByitem);
         return existByitem;
     }
+
+    @Override
+    public Item getId(int id) {
+        Item item = itemRepo.findById(id).orElseThrow(() -> new RuntimeException("Not found"));
+        return item;
+    }
+
+
 }

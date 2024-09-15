@@ -2,6 +2,9 @@ package com.foodapp.springfoodapp.controller;
 
 
 import com.foodapp.springfoodapp.entiry.Item;
+import com.foodapp.springfoodapp.exception.UserException;
+import com.foodapp.springfoodapp.security.Modual.User;
+import com.foodapp.springfoodapp.security.service.UserService;
 import com.foodapp.springfoodapp.service.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +18,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/item")
 public class ItemController {
+    //@RequestHeader("Authorization")String jwt
 
     private final ItemService itemService;
+    private final UserService userService;
+
 
     @PostMapping("/addItem")
     public ResponseEntity<Item> item(@RequestBody @Valid Item item) {
@@ -25,7 +31,7 @@ public class ItemController {
     }
 
     @PostMapping("/addMore")
-    public ResponseEntity<List<Item>> addItems(@RequestBody @Valid List<Item> items) {
+    public ResponseEntity<List<Item>> addItems(@RequestBody @Valid List<Item> items){
         List<Item> itemList = itemService.saveitems(items);
         return ResponseEntity.status(HttpStatus.CREATED).body(itemList);
     }
@@ -35,15 +41,22 @@ public class ItemController {
         List<Item> getItemList = itemService.getItems();
         return ResponseEntity.status(HttpStatus.CREATED).body(getItemList);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> fetchAllItemIds(@PathVariable int id){
+        Item getItemIds = itemService.getId(id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(getItemIds);
+    }
 
     @DeleteMapping("/delete/{itemId}")
-    public ResponseEntity<String> deleteItem(@PathVariable int itemId) {
+    public ResponseEntity<String> deleteItem(@PathVariable int itemId){
         String deleteItems = itemService.deleteitemById(itemId);
         return ResponseEntity.status(HttpStatus.CREATED).body(deleteItems);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Item> updateItem(@RequestBody Item updateitem, @PathVariable int id) {
+    public ResponseEntity<Item> updateItem(@RequestBody Item updateitem,
+                                           @PathVariable int id){
+
         Item updateItems = itemService.updateItems(updateitem, id);
         return ResponseEntity.status(HttpStatus.CREATED).body(updateitem);
     }

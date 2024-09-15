@@ -27,7 +27,4 @@ public class Item {
     @NotNull
     public Double cost;
 
-    //	@OneToOne(cascade = CascadeType.ALL)
-//	@JsonIgnore //todo it will ignore in DB
-//	public Category category;
 }
