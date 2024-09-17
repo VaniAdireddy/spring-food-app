@@ -1,0 +1,153 @@
+pipeline {
+    agent any
+    
+    tools { 
+     jdk 'jdk17' 
+     maven 'maven3' 
+     
+    } 
+    
+    environment{
+        SCANNER_HOHE= tool 'sonar-scanner'
+        
+    }
+ 
+    stages {
+        stage('Git CheckOut') {
+            steps {
+              git branch: 'main', url: 'https://github.com/Srinu-rj/spring-food-app.git'
+            }
+        }
+        stage('Compile') { 
+            steps { 
+                sh "mvn compile" 
+            } 
+        }
+         stage('Test') { 
+            steps { 
+               sh "mvn clean install -DskipTests=true"
+
+            } 
+        }
+        
+        stage('Trivy') { 
+            steps { 
+              sh "trivy fs --format table -o trivy-fs-report.html ." 
+            } 
+        }
+        
+        stage('SonarQube-Analysis') { 
+            steps { 
+              withSonarQubeEnv('sonar') {
+                  sh ''' $SCANNER_HOHE/bin/sonar-scanner -Dsonar.projectName=spring-application  -Dsonar.projectKey=spring-application \
+                  -Dsonar.java.binaries=. '''
+                 }
+            }     
+        }
+        
+        stage('Quality Gate') { 
+            steps { 
+                script { 
+                 waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token' 
+                } 
+            } 
+        }
+        
+        stage('OWASP CHECK'){
+            steps{
+                script{
+                    dependencyCheck additionalArguments: '', odcInstallation: 'Dependency-Check installations'
+                    dependencyCheckPublisher pattern: '**/dependencyCheck-check-report.xml'
+                }
+            }
+        }
+        
+        stage('Publish To Nexus'){
+            steps{
+                script {
+                    nexusArtifactUploader artifacts: 
+                    [
+                        [
+                            artifactId: 'spring-food-app',
+                            classifier: '',
+                            file: 'target/spring-image.jar',
+                            type: 'jar'
+                            ]
+                        ],
+                        credentialsId: 'nexus',
+                        groupId: 'com.foodapp',
+                        nexusUrl: '192.168.0.104:8081',
+                        nexusVersion: 'nexus3', 
+                        protocol: 'http',
+                        repository: 'demo-app',
+                        version: '0.0.1'
+                    
+                }
+            }
+        }
+
+        stage('docker images') { 
+            steps { 
+                script { 
+                 sh "docker build -t spring-image ."
+                } 
+            } 
+        }
+        
+        stage("Tag & Push to DockerHub"){
+            steps{
+                script {
+                    withDockerRegistry(credentialsId: 'docker-credentials', toolName: 'docker') {
+                      sh "docker tag spring-image srinu641/spring-image:latest"
+                      sh "docker push srinu641/spring-image:latest" 
+                    }
+                }
+            }
+        }
+        
+        stage("Docker Scout Image Analysis"){
+            steps{
+                script {
+                    withDockerRegistry(credentialsId: 'docker-credentials') {
+                        sh 'docker-scout quickview srinu641/spring-image:latest'
+                        sh 'docker-scout cves srinu641/spring-image:latest'
+                        sh 'docker-scout recommendations srinu641/spring-image:latest'
+                    }
+                }
+            }
+        }
+        
+     
+        
+    }
+    
+    post {
+    always {
+        emailext attachLog: true,
+            subject: "'${currentBuild.result}'",
+            body: """
+                <html>
+                <body>
+                    <div style="background-color: #FFA07A; padding: 10px; margin-bottom: 10px;">
+                        <p style="color: white; font-weight: bold;">Project: ${env.JOB_NAME}</p>
+                    </div>
+                    <div style="background-color: #90EE90; padding: 10px; margin-bottom: 10px;">
+                        <p style="color: white; font-weight: bold;">Build Number: ${env.BUILD_NUMBER}</p>
+                    </div>
+                    <div style="background-color: #87CEEB; padding: 10px; margin-bottom: 10px;">
+                        <p style="color: white; font-weight: bold;">URL: ${env.BUILD_URL}</p>
+                    </div>
+                </body>
+                </html>
+            """,
+            to: 'dnsrinu143@gmail.com',
+            mimeType: 'text/html'
+        }
+    }
+
+}
+
+
+
+================================================================
+
