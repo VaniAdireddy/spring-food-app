@@ -37,7 +37,7 @@ spec:
   ports:
     - protocol: "TCP"
       port: 8998    # Port inside the cluster
-      targetPort:   # Port exposed to the outside
+      targetPort: 8998   # Port exposed to the outside
   selector:
     app: app-deployment
   type: NodePort
