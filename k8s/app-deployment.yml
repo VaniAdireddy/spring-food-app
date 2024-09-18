@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: app-deployment
-  replicas: 3
+  replicas: 6
   template:
     metadata:
       labels:
@@ -15,7 +15,7 @@ spec:
       containers:
         - name: app-deployment
           image: srinu641/spring-image:latest
-          imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always    #imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 8998
           env:   # Setting Environmental Variables
