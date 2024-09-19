@@ -15,7 +15,7 @@ spec:
       containers:
         - name: app-deployment
           image: srinu641/spring-image:latest
-          imagePullPolicy: Always    #imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always    #todo imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 8998
           env:   # Setting Environmental Variables
