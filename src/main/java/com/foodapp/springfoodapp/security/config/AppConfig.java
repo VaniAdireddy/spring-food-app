@@ -25,8 +25,8 @@ public class AppConfig {
                                 //todo /api/admin/**" -> this api only access  -> "RESTAURANT_OWNER", "ADMIN"
                                 .requestMatchers("/api/admin/**").hasAnyRole("RESTAURANT_OWNER", "ADMIN")
 //                             //todo if any request start with API authenticated
-//                                .requestMatchers("/api/**").authenticated()
-                                .anyRequest().permitAll()
+                                .requestMatchers("/api/**").authenticated()
+                                .anyRequest().permitAll()  
                 )
                 .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
                 .csrf(csrf -> csrf.disable())
