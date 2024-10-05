@@ -1,3 +1,4 @@
+@Library('my-shared-library') _
 pipeline {
     agent any
 
@@ -6,7 +7,7 @@ pipeline {
             steps {
                 sh 'echo Git checkOut'
                 gitCheckOut{
-                 branch: "main"
+                 branch: "main",
                  url: "https://github.com/Srinu-rj/spring-food-app.git"
                 }
 
