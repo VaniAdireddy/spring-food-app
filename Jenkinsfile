@@ -18,11 +18,4 @@ pipeline {
     }
 }
 
-// This method should be outside the pipeline block
-def call(Map stageParams) {
-    checkout([
-        $class: 'GitSCM',
-        branches: [[name: stageParams.branch]],
-        userRemoteConfigs: [[url: stageParams.url]]
-    ])
-}
+
