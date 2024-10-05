@@ -7,8 +7,8 @@ pipeline {
         stage('Git checkOut') {
             steps {
                 gitCheckOut{
-                 branch: "main",
-                 url: "https://github.com/Srinu-rj/spring-food-app.git"
+                 url: "https://github.com/Srinu-rj/spring-food-app.git",
+                 branch: "main"
 
                 }
 
