@@ -1,4 +1,4 @@
-// @Library('my-shared-library') _
+@Library('my-shared-library') _
 
 pipeline {
     agent any
@@ -6,13 +6,23 @@ pipeline {
     stages {
         stage('Git checkOut') {
             steps {
-                gitCheckout{
-                 branch: 'main',
-                 url: "https://github.com/Srinu-rj/spring-food-app.git"
-
+                script {
+                    // Proper way to pass named parameters to a method in Groovy
+                    gitCheckOut(
+                        url: 'https://github.com/Srinu-rj/spring-food-app.git',
+                        branch: 'main'
+                    )
                 }
-
             }
         }
     }
+}
+
+// This method should be outside the pipeline block
+def call(Map stageParams) {
+    checkout([
+        $class: 'GitSCM',
+        branches: [[name: stageParams.branch]],
+        userRemoteConfigs: [[url: stageParams.url]]
+    ])
 }
