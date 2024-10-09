@@ -56,11 +56,11 @@ spec:
           imagePullPolicy: "IfNotPresent"
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: root
+              value: srinu1234
             - name: MYSQL_DATABASE
-              value: k8s
+              value: jdbc:mysql://database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com:3306/spring
           ports:
-            - containerPort: 3307
+            - containerPort: 3306
               name: mysql
           volumeMounts:
             - mountPath: /var/lib/mysql

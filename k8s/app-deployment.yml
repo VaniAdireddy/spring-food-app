@@ -22,11 +22,11 @@ spec:
             - name: DB_HOST   # Setting Database host address
               value: mysql
             - name: DB_NAME  # Setting Database name
-              value: k8s
+              value: jdbc:mysql://database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com:3306/spring
             - name: DB_USERNAME  # Setting Database username
               value: root
             - name: DB_PASSWORD # Setting Database password
-              value: root
+              value: srinu1234
 ---
 # Define a 'Service' To Expose the application
 apiVersion: v1
