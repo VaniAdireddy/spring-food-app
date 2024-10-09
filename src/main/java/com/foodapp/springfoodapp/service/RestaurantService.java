@@ -1,7 +1,6 @@
 package com.foodapp.springfoodapp.service;
 
 import com.foodapp.springfoodapp.entiry.Restaurant;
-import com.foodapp.springfoodapp.security.Modual.User;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

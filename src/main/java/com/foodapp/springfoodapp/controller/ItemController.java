@@ -3,8 +3,7 @@ package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.Item;
 import com.foodapp.springfoodapp.exception.UserException;
-import com.foodapp.springfoodapp.security.Modual.User;
-import com.foodapp.springfoodapp.security.service.UserService;
+
 import com.foodapp.springfoodapp.service.ItemService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +20,6 @@ public class ItemController {
     //@RequestHeader("Authorization")String jwt
 
     private final ItemService itemService;
-    private final UserService userService;
 
 
     @PostMapping("/addItem")

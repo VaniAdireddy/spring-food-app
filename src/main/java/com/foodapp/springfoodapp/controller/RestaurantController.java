@@ -2,8 +2,6 @@ package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.Restaurant;
 import com.foodapp.springfoodapp.exception.UserException;
-import com.foodapp.springfoodapp.security.Modual.User;
-import com.foodapp.springfoodapp.security.service.UserService;
 import com.foodapp.springfoodapp.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +18,6 @@ public class RestaurantController {
 //@RequestHeader("Authorization")String jwt
 
     private final RestaurantService restaurantService;
-    private final UserService userService;
 
     @PostMapping("/add")
     public ResponseEntity<Restaurant> restaurant(@RequestBody Restaurant restaurant) throws UserException {
