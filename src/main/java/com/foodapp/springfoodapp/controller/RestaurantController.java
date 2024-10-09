@@ -23,8 +23,7 @@ public class RestaurantController {
     private final UserService userService;
 
     @PostMapping("/add")
-    public ResponseEntity<Restaurant> restaurant(@RequestBody Restaurant restaurant,@RequestHeader("Authorization")String jwt) throws UserException {
-        User user=userService.findUserProfileByJwt(jwt);
+    public ResponseEntity<Restaurant> restaurant(@RequestBody Restaurant restaurant) throws UserException {
         Restaurant saveRestaurant = restaurantService.saveRestaurant(restaurant);
         return new ResponseEntity<>(saveRestaurant, HttpStatus.ACCEPTED);
     }

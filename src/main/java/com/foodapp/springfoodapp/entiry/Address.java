@@ -18,8 +18,9 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int addressId;
-    @Min(5)
-    @NotNull(message = "shouldn't be Null Area")
+//    @Min(5)
+//    @Max(10)
+//    @NotNull(message = "shouldn't be Null Area")
     public String area;
     @NotNull(message = "shouldn't be Null City")
     public String city;
