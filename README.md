@@ -1,5 +1,6 @@
 Jenkins pipeline console
-![image](https://github.com/user-attachments/assets/5a933420-6d11-4362-aba8-d9585263f629)
+![Uploading image.png…]()
+
 
 
 
