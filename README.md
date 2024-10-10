@@ -9,3 +9,6 @@ SONARQUBE :
 SPRING BOOT DEPLOYED IN KUBERNATES:
 
 ![image](https://github.com/user-attachments/assets/e5975646-2231-4c58-a89c-c32d85e5f028)
+
+![image](https://github.com/user-attachments/assets/7524647e-96d4-4561-812f-df4daeae67b7)
+
