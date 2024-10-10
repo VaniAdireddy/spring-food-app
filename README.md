@@ -12,3 +12,5 @@ SPRING BOOT DEPLOYED IN KUBERNATES:
 
 ![image](https://github.com/user-attachments/assets/7524647e-96d4-4561-812f-df4daeae67b7)
 
+KUBERNATES DASHBOARD:
+![image](https://github.com/user-attachments/assets/53bc82d1-5b06-49d5-a88f-a863635ebc35)
