@@ -56,9 +56,16 @@ spec:
           imagePullPolicy: "IfNotPresent"
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: srinu1234
-            - name: MYSQL_DATABASE
-              value: jdbc:mysql://database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com:3306/spring
+              valueFrom :
+                secretKeyRef :
+                  name : mysql-secrets
+                  key :  password
+
+            - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
+              valueFrom :
+                configMapKeyRef :
+                  name : db-config
+                  key :  dbName
           ports:
             - containerPort: 3306
               name: mysql
