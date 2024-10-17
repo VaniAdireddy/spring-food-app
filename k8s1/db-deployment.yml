@@ -54,22 +54,22 @@ spec:
         - name: mysql
           image: mysql
           imagePullPolicy: "IfNotPresent"
-          env:
-            - name: SPRING_DATASOURCE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-credentials
-                  key: password
-            - name: SPRING_DATASOURCE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: spring-boot-config
-                  key: SPRING_DATASOURCE_URL
 #          env:
-#            - name: MYSQL_ROOT_PASSWORD
-#              value: srinu1234
-#            - name: MYSQL_DATABASE
-#              value: database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com/spring
+#            - name: SPRING_DATASOURCE_PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: db-credentials
+#                  key: password
+#            - name: SPRING_DATASOURCE_URL
+#              valueFrom:
+#                configMapKeyRef:
+#                  name: spring-boot-config
+#                  key: SPRING_DATASOURCE_URL
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: srinu1234
+            - name: MYSQL_DATABASE
+              value: database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com/spring
           ports:
             - containerPort: 3306
               name: mysql
