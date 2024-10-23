@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: spring-boot-config
 data:
-  SPRING_DATASOURCE_URL: jdbc:mysql://database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com:3306/spring
+  SPRING_DATASOURCE_URL: jdbc:mysql://database-one.c5u6c62qgth3.us-east-1.rds.amazonaws.com/spring
   SPRING_DATASOURCE_USERNAME: root
   SPRING_DATASOURCE_PASSWORD: srinu1234
   SPRING_DATASOURCE_DRIVER_CLASS_NAME: com.mysql.cj.jdbc.Driver

@@ -4,7 +4,7 @@ metadata:
   name: rds-service
 spec:
   type: ExternalName
-  externalName: jdbc:mysql://database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com:3306/spring
+  externalName: jdbc:mysql://database-one.c5u6c62qgth3.us-east-1.rds.amazonaws.com/spring
   ports:
     - protocol: TCP
       port: 3306

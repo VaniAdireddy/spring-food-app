@@ -22,7 +22,7 @@ spec:
             - name: DB_HOST   # Setting Database host address
               value: mysql
             - name: DB_NAME  # Setting Database name
-              value: jdbc:mysql://database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com:3306/spring
+              value: jdbc:mysql://database-one.c5u6c62qgth3.us-east-1.rds.amazonaws.com/spring
             - name: DB_USERNAME  # Setting Database username
               value: root
             - name: DB_PASSWORD # Setting Database password
