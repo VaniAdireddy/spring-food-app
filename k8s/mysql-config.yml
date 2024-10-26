@@ -4,7 +4,6 @@ metadata:
   name : db-config
 data:
   host : mysql
-#  dbName: jdbc:mysql://database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com:3306/spring
-  dbName: spring
-#  dbName: database-1.c5gs8ey0ghui.us-east-1.rds.amazonaws.com
+  dbName: jdbc:mysql://database.cn2aysi4umep.us-east-1.rds.amazonaws.com:3306/spring
+#  dbName: spring
 ---

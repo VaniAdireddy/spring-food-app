@@ -18,30 +18,15 @@ spec:
           imagePullPolicy: Always    #todo imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 8998
-          env:   # Setting Environmental Variables            - name: DB_HOST   # Setting Database host address from configMap
-            - name: DB_HOST   # Setting Database host address from configMap
-              valueFrom :
-                configMapKeyRef :
-                  name : db-config
-                  key :  host
-
-            - name: DB_NAME  # Setting Database name from configMap
-              valueFrom :
-                configMapKeyRef :
-                  name : db-config # todo call the yml file name
-                  key :  dbName
-
-            - name: DB_USERNAME  # Setting Database username from Secret
-              valueFrom :
-                secretKeyRef :
-                  name : mysql-secrets # todo call the yml file name
-                  key :  username
-
-            - name: DB_PASSWORD # Setting Database password from Secret
-              valueFrom :
-                secretKeyRef :
-                  name : mysql-secrets
-                  key : password
+          env:   # Setting Environmental Variables
+            - name: DB_HOST   # Setting Database host address
+              value: mysql
+            - name: DB_NAME  # Setting Database name
+              value: jdbc:mysql://database.cn2aysi4umep.us-east-1.rds.amazonaws.com:3306/spring
+            - name: DB_USERNAME  # Setting Database username
+              value: root
+            - name: DB_PASSWORD # Setting Database password
+              value: srinu1234
 ---
 
 #todo  Define a 'Service' To Expose the application

@@ -23,8 +23,8 @@ metadata:
     tier: database
 spec:
   ports:
-    - port: 3307
-      targetPort: 3307
+    - port: 3306
+      targetPort: 3306
   selector:
     app: mysql
     tier: database
@@ -52,20 +52,13 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql
+          image: mysql:8.0.36
           imagePullPolicy: "IfNotPresent"
           env:
             - name: MYSQL_ROOT_PASSWORD
-              valueFrom :
-                secretKeyRef :
-                  name : mysql-secrets
-                  key :  password
-
-            - name: MYSQL_DATABASE # Setting Database Name from a 'ConfigMap'
-              valueFrom :
-                configMapKeyRef :
-                  name : db-config
-                  key :  dbName
+              value: root
+            - name: MYSQL_DATABASE
+              value: srinu1234
           ports:
             - containerPort: 3306
               name: mysql
