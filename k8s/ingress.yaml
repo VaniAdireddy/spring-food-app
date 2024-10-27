@@ -1,19 +1,33 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: name
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
+  name: springboot-ingress
+  namespace: app-deployment-namespace
 spec:
-  rules:
-    - host: spring-boot.com
-      http:
-        paths:
-          - path: /
-            pathType: Exact
-            backend:
-              service:
-                name: app-service
-                port:
-                  number: 8998
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`spring-boot.com`) && PathPrefix(`/api/address`)
+      services:
+        - kind: Service
+          name: app-service
+          port: 8998
+          scheme: http
+
+    - kind: Rule
+      match: Host(`spring-boot.com`) && PathPrefix(`/api/bill`)
+      services:
+        - kind: Service
+          name: app-service
+          port: 8998
+          scheme: http
+
+    - kind: Rule
+      match: Host(`spring-boot.com`) && PathPrefix(`/api/`)
+      services:
+        - kind: Service
+          name: app-service
+          port: 8998
+          scheme: http
 ---

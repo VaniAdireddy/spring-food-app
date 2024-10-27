@@ -35,6 +35,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  namespace: app-deployment
   labels:
     app: mysql
     tier: database
