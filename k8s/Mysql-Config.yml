@@ -5,5 +5,9 @@ metadata:
 data:
   host : mysql
   dbName: jdbc:mysql://database.cn2aysi4umep.us-east-1.rds.amazonaws.com:3306/spring
+
+#    - name: DB_URL
+#      value: jdbc:mysql://database.cn2aysi4umep.us-east-1.rds.amazonaws.com:3306/spring
+
 #  dbName: spring
 ---
