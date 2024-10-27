@@ -3,3 +3,8 @@ kind: Namespace
 metadata:
   name: app-deployment-namespace
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: app2-deployment-namespace
+---

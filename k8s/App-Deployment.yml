@@ -16,7 +16,7 @@ spec:
       containers:
         - name: app-deployment
           image: srinu641/spring-image:latest
-          imagePullPolicy: Always    #todo imagePullPolicy: "IfNotPresent"
+          imagePullPolicy: Always  #todo imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 8998
           env:   # Setting Environmental Variables
@@ -29,7 +29,6 @@ spec:
             - name: DB_PASSWORD # Setting Database password
               value: srinu1234
 ---
-
 #todo  Define a 'Service' To Expose the application
 apiVersion: v1
 kind: Service

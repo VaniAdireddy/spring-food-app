@@ -24,7 +24,7 @@ spec:
           scheme: http
 
     - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/`)
+      match: Host(`spring-boot.com`) && PathPrefix(`/api/customer`)
       services:
         - kind: Service
           name: app-service
