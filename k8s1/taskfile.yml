@@ -22,7 +22,7 @@ tasks:
   03-apply-better:
     desc: "Apply the better Deployment configuration"
     cmds:
-      - kubectl apply -f Db-Deployment.yml
+      - kubectl apply -f db-deployment.yml
 
   04-rollout-restart:
     desc: "Roll the pods in one of the deployments"
