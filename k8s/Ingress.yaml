@@ -1,65 +1,84 @@
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: springboot-ingress
-  namespace: app-deployment-namespace
+  name: spring-boot-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  entryPoints:
-    - web
-  routes:
-    - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/address`)
-      services:
-        - kind: Service
-          name: app-service
-          port: 8998
-          scheme: http
-
-    - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/bill`)
-      services:
-        - kind: Service
-          name: app-service
-          port: 8998
-          scheme: http
-
-    - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/customer`)
-      services:
-        - kind: Service
-          name: app-service
-          port: 8998
-          scheme: http
-
-    - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/restaurant`)
-      services:
-        - kind: Service
-          name: app-service
-          port: 8998
-          scheme: http
-
-    - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/order`)
-      services:
-        - kind: Service
-          name: app-service
-          port: 8998
-          scheme: http
-
-    - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/item`)
-      services:
-        - kind: Service
-          name: app-service
-          port: 8998
-          scheme: http
-
-    - kind: Rule
-      match: Host(`spring-boot.com`) && PathPrefix(`/api/category`)
-      services:
-        - kind: Service
-          name: app-service
-          port: 8998
-          scheme: http
+  rules:
+    - host: spring.boot.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app-service
+                port:
+                  number: 8998
 ---
+#apiVersion: traefik.containo.us/v1alpha1
+#kind: IngressRoute
+#metadata:
+#  name: springboot-ingress
+#  namespace: app-deployment-namespace
+#spec:
+#  entryPoints:
+#    - web
+#  routes:
+#    - kind: Rule
+#      match: Host(`spring-boot.com`) && PathPrefix(`/api/address`)
+#      services:
+#        - kind: Service
+#          name: app-service
+#          port: 8998
+#          scheme: http
+#
+#    - kind: Rule
+#      match: Host(`spring-boot.com`) && PathPrefix(`/api/bill`)
+#      services:
+#        - kind: Service
+#          name: app-service
+#          port: 8998
+#          scheme: http
+#
+#    - kind: Rule
+#      match: Host(`spring-boot.com`) && PathPrefix(`/api/customer`)
+#      services:
+#        - kind: Service
+#          name: app-service
+#          port: 8998
+#          scheme: http
+#
+#    - kind: Rule
+#      match: Host(`spring-boot.com`) && PathPrefix(`/api/restaurant`)
+#      services:
+#        - kind: Service
+#          name: app-service
+#          port: 8998
+#          scheme: http
+#
+#    - kind: Rule
+#      match: Host(`spring-boot.com`) && PathPrefix(`/api/order`)
+#      services:
+#        - kind: Service
+#          name: app-service
+#          port: 8998
+#          scheme: http
+#
+#    - kind: Rule
+#      match: Host(`spring-boot.com`) && PathPrefix(`/api/item`)
+#      services:
+#        - kind: Service
+#          name: app-service
+#          port: 8998
+#          scheme: http
+#
+#    - kind: Rule
+#      match: Host(`spring-boot.com`) && PathPrefix(`/api/category`)
+#      services:
+#        - kind: Service
+#          name: app-service
+#          port: 8998
+#          scheme: http
+#---
