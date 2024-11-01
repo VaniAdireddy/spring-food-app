@@ -22,7 +22,7 @@ spec:
   tls:                             # Enable TLS for HTTPS
     - hosts:
         - argocd.example.com
-      secretName: argocd-tls       # Replace with your TLS secret
+      secretName: argocd-tls-secret       # Replace with your TLS secret
 ---
 apiVersion: v1
 kind: Secret
