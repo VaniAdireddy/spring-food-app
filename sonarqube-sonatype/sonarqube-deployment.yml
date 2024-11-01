@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: sonarqube
-  namespace: sonarqube-namespace
+  namespace: sonarqube
 spec:
   replicas: 1
   selector:
