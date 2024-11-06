@@ -16,7 +16,7 @@ public interface AddressRepo extends JpaRepository<Address, Integer> {
     //    @Query("SELECT a FROM address a WHERE a.city =: city")
     Address findByCity(String city);
 
-
+    
 //    @Query("SELECT a FROM address a WHERE a.pinCode =: pinCode ")
 //    Address findByPinCode(@RequestParam int pinCode);
 }
