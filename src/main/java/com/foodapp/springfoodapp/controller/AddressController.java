@@ -20,6 +20,11 @@ public class AddressController {
 
     private final AddressServices addressServices;
 
+    @GetMapping("/find/all/address/quary")
+    public ResponseEntity<List<Address>>findAllByJpql(){
+        List<Address> address = addressServices.findAdd();
+        return new ResponseEntity<>(address, HttpStatus.OK);
+    }
 
     @PostMapping("/add/list/address")
     public ResponseEntity<List<Address>> saveAddress(@RequestBody @Valid List<Address> addresses) {

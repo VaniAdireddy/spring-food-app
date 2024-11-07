@@ -26,4 +26,7 @@ public interface AddressServices {
 
     Address findByCity(String city);
 
+    List<Address> findAdd();
+
+
 }

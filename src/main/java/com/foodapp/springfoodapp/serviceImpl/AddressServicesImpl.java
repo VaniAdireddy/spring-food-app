@@ -16,11 +16,9 @@ import java.util.Optional;
 public class AddressServicesImpl implements AddressServices {
 
     private final AddressRepo addressRepo;
-    List<Address> addresses = new ArrayList<>();
 
     //todo -> error "Query did not return a unique result: 3 results were returned",
     @Override
-
     public List<Address> saveAddress(List<Address> addresses) {
         return addressRepo.saveAll(addresses);
     }
@@ -33,7 +31,7 @@ public class AddressServicesImpl implements AddressServices {
 
     @Override
     public List<Address> getAll() {
-        return addressRepo.findAll();
+        return addressRepo.findAllAddress();
     }
 
     @Override
@@ -78,6 +76,11 @@ public class AddressServicesImpl implements AddressServices {
             throw new RuntimeException("Not Found");
         }
         return address.get();
+    }
+
+    @Override
+    public List<Address> findAdd() {
+        return addressRepo.findAllAddress();
     }
 
 
