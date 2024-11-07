@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "Restaurant")
 @Entity
+@DynamicInsert
+@DynamicUpdate
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
