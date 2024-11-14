@@ -8,7 +8,6 @@ import java.util.List;
 
 @Service
 public interface AddressServices {
-    
 
     Address updateAddress(Address updateAddress,int id);
     List<Address> saveAddress(List<Address> addresses);
@@ -21,12 +20,6 @@ public interface AddressServices {
 
     String deleteAddress(int addressId);
 
-//    Address findByPinCode(int pinCode);
-
-
-    Address findByCity(String city);
-
     List<Address> findAdd();
-
 
 }

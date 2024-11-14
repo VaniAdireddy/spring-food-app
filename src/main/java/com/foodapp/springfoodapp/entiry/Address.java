@@ -18,13 +18,10 @@ import org.hibernate.annotations.DynamicUpdate;
 @DynamicInsert
 @DynamicUpdate
 public class Address {
-    //todo data layer
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int addressId;
-//    @Min(5)
-//    @Max(10)
-//    @NotNull(message = "shouldn't be Null Area")
     public String area;
     @NotNull(message = "shouldn't be Null City")
     public String city;
@@ -33,7 +30,6 @@ public class Address {
     @NotNull(message = "shouldn't be Null Country")
     public String country;
     @Column(nullable = false, unique = true)
-//    @Min(6)
     public String pinCode;
 }
 

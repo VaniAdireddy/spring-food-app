@@ -7,23 +7,31 @@ spec:
   selector:
     matchLabels:
       app: app-deployment
-  replicas: 6
+  replicas: 10
   template:
     metadata:
       labels:
         app: app-deployment
     spec:
+#      nodeName: Your_nodeName # you can specify with in Particular node.
       containers:
         - name: app-deployment
           image: srinu641/spring-image:latest
           imagePullPolicy: Always  #todo imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 8998
+          resources:
+            requests:
+              memory: 20Mi
+              cpu: "0.25"
+            limits:
+              memory: 400Mi
+              cpu: "1"
           env:   # Setting Environmental Variables
             - name: DB_HOST   # Setting Database host address
               value: mysql
             - name: DB_NAME  # Setting Database name
-              value: jdbc:mysql://database.cn2aysi4umep.us-east-1.rds.amazonaws.com:3306/spring
+              value: jdbc:mysql://rds-database.cn2aysi4umep.us-east-1.rds.amazonaws.com/spring
             - name: DB_USERNAME  # Setting Database username
               value: root
             - name: DB_PASSWORD # Setting Database password

@@ -22,6 +22,7 @@ import java.util.List;
 @DynamicInsert
 @DynamicUpdate
 public class Restaurant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int restaurantId;

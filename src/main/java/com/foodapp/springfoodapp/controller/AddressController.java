@@ -1,10 +1,11 @@
 package com.foodapp.springfoodapp.controller;
 
 import com.foodapp.springfoodapp.entiry.Address;
-import com.foodapp.springfoodapp.exception.UserException;
 import com.foodapp.springfoodapp.service.AddressServices;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,10 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/address")
 public class AddressController {
-//@RequestHeader("Authorization")
-//@RequestHeader("Authorization")String jwt
-
     private final AddressServices addressServices;
 
     @GetMapping("/find/all/address/quary")
-    public ResponseEntity<List<Address>>findAllByJpql(){
+    public ResponseEntity<List<Address>> findAllByJpql() {
         List<Address> address = addressServices.findAdd();
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
@@ -61,18 +59,5 @@ public class AddressController {
         Address address = addressServices.updateAddress(updateAddress, id);
         return new ResponseEntity<>(address, HttpStatus.OK);
     }
-
-    @GetMapping("/findCity/{city}")
-    public ResponseEntity<Address> findByAddressCity(@PathVariable String city) throws UserException {
-        Address address = addressServices.findByCity(city);
-        return new ResponseEntity<>(address, HttpStatus.CREATED);
-    }
-
-//    @GetMapping("/{pinCode}/findByPinCode")
-//    public ResponseEntity<Address> findByPinCode (@PathVariable int pinCode){
-//        Address address= addressServices.findByPinCode(pinCode);
-//        return new ResponseEntity<>(address,HttpStatus.CREATED);
-//    }
-
 
 }

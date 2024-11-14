@@ -17,22 +17,19 @@ import java.util.List;
 @Entity
 @DynamicInsert
 @DynamicUpdate
-@Table(name = "foodcart")
+@Table(name = "foodCart")
 public class FoodCart {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer cartId;
-
-    public String cartName;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer cartId;
+    private String cartName;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
-    public Customer customer;
-
-
+    private Customer customer;
     @OneToMany(targetEntity = Item.class, cascade = CascadeType.ALL)
-    public List<Item> itemList;
+    private List<Item> itemList;
 
 
 }

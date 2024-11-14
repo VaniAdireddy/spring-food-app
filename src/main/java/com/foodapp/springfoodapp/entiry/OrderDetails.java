@@ -27,11 +27,10 @@ public class OrderDetails {
     public LocalDateTime orderDate;
     public String orderStatus;
 
-
+    
     @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
     public FoodCart cart;
-
 
     @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnore
